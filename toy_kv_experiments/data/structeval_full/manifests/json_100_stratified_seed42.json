@@ -1,0 +1,818 @@
+{
+  "manifest_version": 1,
+  "source_file": "structeval_test.jsonl",
+  "source_sha256": "d4d838145fbe285d0c446b449470512c0c4d3922422894c77aa6183913751bda",
+  "output_type": "JSON",
+  "sampling": "stratified",
+  "seed": 42,
+  "task_count": 100,
+  "stratum_counts": {
+    "CSV": 20,
+    "TOML": 20,
+    "Text": 20,
+    "XML": 20,
+    "YAML": 20
+  },
+  "tasks": [
+    {
+      "selection_index": 0,
+      "task_id": "100520",
+      "task_name": "TOML to JSON",
+      "input_type": "TOML",
+      "output_type": "JSON",
+      "stratum": "TOML"
+    },
+    {
+      "selection_index": 1,
+      "task_id": "170539",
+      "task_name": "XML to JSON",
+      "input_type": "XML",
+      "output_type": "JSON",
+      "stratum": "XML"
+    },
+    {
+      "selection_index": 2,
+      "task_id": "100513",
+      "task_name": "TOML to JSON",
+      "input_type": "TOML",
+      "output_type": "JSON",
+      "stratum": "TOML"
+    },
+    {
+      "selection_index": 3,
+      "task_id": "020529",
+      "task_name": "CSV to JSON",
+      "input_type": "CSV",
+      "output_type": "JSON",
+      "stratum": "CSV"
+    },
+    {
+      "selection_index": 4,
+      "task_id": "020525",
+      "task_name": "CSV to JSON",
+      "input_type": "CSV",
+      "output_type": "JSON",
+      "stratum": "CSV"
+    },
+    {
+      "selection_index": 5,
+      "task_id": "180513",
+      "task_name": "YAML to JSON",
+      "input_type": "YAML",
+      "output_type": "JSON",
+      "stratum": "YAML"
+    },
+    {
+      "selection_index": 6,
+      "task_id": "180502",
+      "task_name": "YAML to JSON",
+      "input_type": "YAML",
+      "output_type": "JSON",
+      "stratum": "YAML"
+    },
+    {
+      "selection_index": 7,
+      "task_id": "180504",
+      "task_name": "YAML to JSON",
+      "input_type": "YAML",
+      "output_type": "JSON",
+      "stratum": "YAML"
+    },
+    {
+      "selection_index": 8,
+      "task_id": "180517",
+      "task_name": "YAML to JSON",
+      "input_type": "YAML",
+      "output_type": "JSON",
+      "stratum": "YAML"
+    },
+    {
+      "selection_index": 9,
+      "task_id": "000535",
+      "task_name": "Text to JSON",
+      "input_type": "Text",
+      "output_type": "JSON",
+      "stratum": "Text"
+    },
+    {
+      "selection_index": 10,
+      "task_id": "020515",
+      "task_name": "CSV to JSON",
+      "input_type": "CSV",
+      "output_type": "JSON",
+      "stratum": "CSV"
+    },
+    {
+      "selection_index": 11,
+      "task_id": "100522",
+      "task_name": "TOML to JSON",
+      "input_type": "TOML",
+      "output_type": "JSON",
+      "stratum": "TOML"
+    },
+    {
+      "selection_index": 12,
+      "task_id": "170532",
+      "task_name": "XML to JSON",
+      "input_type": "XML",
+      "output_type": "JSON",
+      "stratum": "XML"
+    },
+    {
+      "selection_index": 13,
+      "task_id": "000512",
+      "task_name": "Text to JSON",
+      "input_type": "Text",
+      "output_type": "JSON",
+      "stratum": "Text"
+    },
+    {
+      "selection_index": 14,
+      "task_id": "020538",
+      "task_name": "CSV to JSON",
+      "input_type": "CSV",
+      "output_type": "JSON",
+      "stratum": "CSV"
+    },
+    {
+      "selection_index": 15,
+      "task_id": "180545",
+      "task_name": "YAML to JSON",
+      "input_type": "YAML",
+      "output_type": "JSON",
+      "stratum": "YAML"
+    },
+    {
+      "selection_index": 16,
+      "task_id": "170505",
+      "task_name": "XML to JSON",
+      "input_type": "XML",
+      "output_type": "JSON",
+      "stratum": "XML"
+    },
+    {
+      "selection_index": 17,
+      "task_id": "180527",
+      "task_name": "YAML to JSON",
+      "input_type": "YAML",
+      "output_type": "JSON",
+      "stratum": "YAML"
+    },
+    {
+      "selection_index": 18,
+      "task_id": "000519",
+      "task_name": "Text to JSON",
+      "input_type": "Text",
+      "output_type": "JSON",
+      "stratum": "Text"
+    },
+    {
+      "selection_index": 19,
+      "task_id": "100531",
+      "task_name": "TOML to JSON",
+      "input_type": "TOML",
+      "output_type": "JSON",
+      "stratum": "TOML"
+    },
+    {
+      "selection_index": 20,
+      "task_id": "180539",
+      "task_name": "YAML to JSON",
+      "input_type": "YAML",
+      "output_type": "JSON",
+      "stratum": "YAML"
+    },
+    {
+      "selection_index": 21,
+      "task_id": "100505",
+      "task_name": "TOML to JSON",
+      "input_type": "TOML",
+      "output_type": "JSON",
+      "stratum": "TOML"
+    },
+    {
+      "selection_index": 22,
+      "task_id": "170543",
+      "task_name": "XML to JSON",
+      "input_type": "XML",
+      "output_type": "JSON",
+      "stratum": "XML"
+    },
+    {
+      "selection_index": 23,
+      "task_id": "100511",
+      "task_name": "TOML to JSON",
+      "input_type": "TOML",
+      "output_type": "JSON",
+      "stratum": "TOML"
+    },
+    {
+      "selection_index": 24,
+      "task_id": "100519",
+      "task_name": "TOML to JSON",
+      "input_type": "TOML",
+      "output_type": "JSON",
+      "stratum": "TOML"
+    },
+    {
+      "selection_index": 25,
+      "task_id": "100529",
+      "task_name": "TOML to JSON",
+      "input_type": "TOML",
+      "output_type": "JSON",
+      "stratum": "TOML"
+    },
+    {
+      "selection_index": 26,
+      "task_id": "170517",
+      "task_name": "XML to JSON",
+      "input_type": "XML",
+      "output_type": "JSON",
+      "stratum": "XML"
+    },
+    {
+      "selection_index": 27,
+      "task_id": "020516",
+      "task_name": "CSV to JSON",
+      "input_type": "CSV",
+      "output_type": "JSON",
+      "stratum": "CSV"
+    },
+    {
+      "selection_index": 28,
+      "task_id": "180530",
+      "task_name": "YAML to JSON",
+      "input_type": "YAML",
+      "output_type": "JSON",
+      "stratum": "YAML"
+    },
+    {
+      "selection_index": 29,
+      "task_id": "020541",
+      "task_name": "CSV to JSON",
+      "input_type": "CSV",
+      "output_type": "JSON",
+      "stratum": "CSV"
+    },
+    {
+      "selection_index": 30,
+      "task_id": "000545",
+      "task_name": "Text to JSON",
+      "input_type": "Text",
+      "output_type": "JSON",
+      "stratum": "Text"
+    },
+    {
+      "selection_index": 31,
+      "task_id": "180534",
+      "task_name": "YAML to JSON",
+      "input_type": "YAML",
+      "output_type": "JSON",
+      "stratum": "YAML"
+    },
+    {
+      "selection_index": 32,
+      "task_id": "180524",
+      "task_name": "YAML to JSON",
+      "input_type": "YAML",
+      "output_type": "JSON",
+      "stratum": "YAML"
+    },
+    {
+      "selection_index": 33,
+      "task_id": "000529",
+      "task_name": "Text to JSON",
+      "input_type": "Text",
+      "output_type": "JSON",
+      "stratum": "Text"
+    },
+    {
+      "selection_index": 34,
+      "task_id": "170522",
+      "task_name": "XML to JSON",
+      "input_type": "XML",
+      "output_type": "JSON",
+      "stratum": "XML"
+    },
+    {
+      "selection_index": 35,
+      "task_id": "000509",
+      "task_name": "Text to JSON",
+      "input_type": "Text",
+      "output_type": "JSON",
+      "stratum": "Text"
+    },
+    {
+      "selection_index": 36,
+      "task_id": "170540",
+      "task_name": "XML to JSON",
+      "input_type": "XML",
+      "output_type": "JSON",
+      "stratum": "XML"
+    },
+    {
+      "selection_index": 37,
+      "task_id": "000539",
+      "task_name": "Text to JSON",
+      "input_type": "Text",
+      "output_type": "JSON",
+      "stratum": "Text"
+    },
+    {
+      "selection_index": 38,
+      "task_id": "100525",
+      "task_name": "TOML to JSON",
+      "input_type": "TOML",
+      "output_type": "JSON",
+      "stratum": "TOML"
+    },
+    {
+      "selection_index": 39,
+      "task_id": "100518",
+      "task_name": "TOML to JSON",
+      "input_type": "TOML",
+      "output_type": "JSON",
+      "stratum": "TOML"
+    },
+    {
+      "selection_index": 40,
+      "task_id": "170523",
+      "task_name": "XML to JSON",
+      "input_type": "XML",
+      "output_type": "JSON",
+      "stratum": "XML"
+    },
+    {
+      "selection_index": 41,
+      "task_id": "020500",
+      "task_name": "CSV to JSON",
+      "input_type": "CSV",
+      "output_type": "JSON",
+      "stratum": "CSV"
+    },
+    {
+      "selection_index": 42,
+      "task_id": "000525",
+      "task_name": "Text to JSON",
+      "input_type": "Text",
+      "output_type": "JSON",
+      "stratum": "Text"
+    },
+    {
+      "selection_index": 43,
+      "task_id": "170512",
+      "task_name": "XML to JSON",
+      "input_type": "XML",
+      "output_type": "JSON",
+      "stratum": "XML"
+    },
+    {
+      "selection_index": 44,
+      "task_id": "100530",
+      "task_name": "TOML to JSON",
+      "input_type": "TOML",
+      "output_type": "JSON",
+      "stratum": "TOML"
+    },
+    {
+      "selection_index": 45,
+      "task_id": "020517",
+      "task_name": "CSV to JSON",
+      "input_type": "CSV",
+      "output_type": "JSON",
+      "stratum": "CSV"
+    },
+    {
+      "selection_index": 46,
+      "task_id": "000538",
+      "task_name": "Text to JSON",
+      "input_type": "Text",
+      "output_type": "JSON",
+      "stratum": "Text"
+    },
+    {
+      "selection_index": 47,
+      "task_id": "100523",
+      "task_name": "TOML to JSON",
+      "input_type": "TOML",
+      "output_type": "JSON",
+      "stratum": "TOML"
+    },
+    {
+      "selection_index": 48,
+      "task_id": "000510",
+      "task_name": "Text to JSON",
+      "input_type": "Text",
+      "output_type": "JSON",
+      "stratum": "Text"
+    },
+    {
+      "selection_index": 49,
+      "task_id": "170506",
+      "task_name": "XML to JSON",
+      "input_type": "XML",
+      "output_type": "JSON",
+      "stratum": "XML"
+    },
+    {
+      "selection_index": 50,
+      "task_id": "180531",
+      "task_name": "YAML to JSON",
+      "input_type": "YAML",
+      "output_type": "JSON",
+      "stratum": "YAML"
+    },
+    {
+      "selection_index": 51,
+      "task_id": "170547",
+      "task_name": "XML to JSON",
+      "input_type": "XML",
+      "output_type": "JSON",
+      "stratum": "XML"
+    },
+    {
+      "selection_index": 52,
+      "task_id": "020528",
+      "task_name": "CSV to JSON",
+      "input_type": "CSV",
+      "output_type": "JSON",
+      "stratum": "CSV"
+    },
+    {
+      "selection_index": 53,
+      "task_id": "000524",
+      "task_name": "Text to JSON",
+      "input_type": "Text",
+      "output_type": "JSON",
+      "stratum": "Text"
+    },
+    {
+      "selection_index": 54,
+      "task_id": "100539",
+      "task_name": "TOML to JSON",
+      "input_type": "TOML",
+      "output_type": "JSON",
+      "stratum": "TOML"
+    },
+    {
+      "selection_index": 55,
+      "task_id": "020537",
+      "task_name": "CSV to JSON",
+      "input_type": "CSV",
+      "output_type": "JSON",
+      "stratum": "CSV"
+    },
+    {
+      "selection_index": 56,
+      "task_id": "100548",
+      "task_name": "TOML to JSON",
+      "input_type": "TOML",
+      "output_type": "JSON",
+      "stratum": "TOML"
+    },
+    {
+      "selection_index": 57,
+      "task_id": "000526",
+      "task_name": "Text to JSON",
+      "input_type": "Text",
+      "output_type": "JSON",
+      "stratum": "Text"
+    },
+    {
+      "selection_index": 58,
+      "task_id": "170500",
+      "task_name": "XML to JSON",
+      "input_type": "XML",
+      "output_type": "JSON",
+      "stratum": "XML"
+    },
+    {
+      "selection_index": 59,
+      "task_id": "170530",
+      "task_name": "XML to JSON",
+      "input_type": "XML",
+      "output_type": "JSON",
+      "stratum": "XML"
+    },
+    {
+      "selection_index": 60,
+      "task_id": "020542",
+      "task_name": "CSV to JSON",
+      "input_type": "CSV",
+      "output_type": "JSON",
+      "stratum": "CSV"
+    },
+    {
+      "selection_index": 61,
+      "task_id": "020513",
+      "task_name": "CSV to JSON",
+      "input_type": "CSV",
+      "output_type": "JSON",
+      "stratum": "CSV"
+    },
+    {
+      "selection_index": 62,
+      "task_id": "020509",
+      "task_name": "CSV to JSON",
+      "input_type": "CSV",
+      "output_type": "JSON",
+      "stratum": "CSV"
+    },
+    {
+      "selection_index": 63,
+      "task_id": "000500",
+      "task_name": "Text to JSON",
+      "input_type": "Text",
+      "output_type": "JSON",
+      "stratum": "Text"
+    },
+    {
+      "selection_index": 64,
+      "task_id": "000511",
+      "task_name": "Text to JSON",
+      "input_type": "Text",
+      "output_type": "JSON",
+      "stratum": "Text"
+    },
+    {
+      "selection_index": 65,
+      "task_id": "020545",
+      "task_name": "CSV to JSON",
+      "input_type": "CSV",
+      "output_type": "JSON",
+      "stratum": "CSV"
+    },
+    {
+      "selection_index": 66,
+      "task_id": "100517",
+      "task_name": "TOML to JSON",
+      "input_type": "TOML",
+      "output_type": "JSON",
+      "stratum": "TOML"
+    },
+    {
+      "selection_index": 67,
+      "task_id": "180541",
+      "task_name": "YAML to JSON",
+      "input_type": "YAML",
+      "output_type": "JSON",
+      "stratum": "YAML"
+    },
+    {
+      "selection_index": 68,
+      "task_id": "020510",
+      "task_name": "CSV to JSON",
+      "input_type": "CSV",
+      "output_type": "JSON",
+      "stratum": "CSV"
+    },
+    {
+      "selection_index": 69,
+      "task_id": "020501",
+      "task_name": "CSV to JSON",
+      "input_type": "CSV",
+      "output_type": "JSON",
+      "stratum": "CSV"
+    },
+    {
+      "selection_index": 70,
+      "task_id": "000516",
+      "task_name": "Text to JSON",
+      "input_type": "Text",
+      "output_type": "JSON",
+      "stratum": "Text"
+    },
+    {
+      "selection_index": 71,
+      "task_id": "100526",
+      "task_name": "TOML to JSON",
+      "input_type": "TOML",
+      "output_type": "JSON",
+      "stratum": "TOML"
+    },
+    {
+      "selection_index": 72,
+      "task_id": "020503",
+      "task_name": "CSV to JSON",
+      "input_type": "CSV",
+      "output_type": "JSON",
+      "stratum": "CSV"
+    },
+    {
+      "selection_index": 73,
+      "task_id": "100524",
+      "task_name": "TOML to JSON",
+      "input_type": "TOML",
+      "output_type": "JSON",
+      "stratum": "TOML"
+    },
+    {
+      "selection_index": 74,
+      "task_id": "170518",
+      "task_name": "XML to JSON",
+      "input_type": "XML",
+      "output_type": "JSON",
+      "stratum": "XML"
+    },
+    {
+      "selection_index": 75,
+      "task_id": "180514",
+      "task_name": "YAML to JSON",
+      "input_type": "YAML",
+      "output_type": "JSON",
+      "stratum": "YAML"
+    },
+    {
+      "selection_index": 76,
+      "task_id": "170519",
+      "task_name": "XML to JSON",
+      "input_type": "XML",
+      "output_type": "JSON",
+      "stratum": "XML"
+    },
+    {
+      "selection_index": 77,
+      "task_id": "180521",
+      "task_name": "YAML to JSON",
+      "input_type": "YAML",
+      "output_type": "JSON",
+      "stratum": "YAML"
+    },
+    {
+      "selection_index": 78,
+      "task_id": "170537",
+      "task_name": "XML to JSON",
+      "input_type": "XML",
+      "output_type": "JSON",
+      "stratum": "XML"
+    },
+    {
+      "selection_index": 79,
+      "task_id": "170526",
+      "task_name": "XML to JSON",
+      "input_type": "XML",
+      "output_type": "JSON",
+      "stratum": "XML"
+    },
+    {
+      "selection_index": 80,
+      "task_id": "180537",
+      "task_name": "YAML to JSON",
+      "input_type": "YAML",
+      "output_type": "JSON",
+      "stratum": "YAML"
+    },
+    {
+      "selection_index": 81,
+      "task_id": "100532",
+      "task_name": "TOML to JSON",
+      "input_type": "TOML",
+      "output_type": "JSON",
+      "stratum": "TOML"
+    },
+    {
+      "selection_index": 82,
+      "task_id": "180505",
+      "task_name": "YAML to JSON",
+      "input_type": "YAML",
+      "output_type": "JSON",
+      "stratum": "YAML"
+    },
+    {
+      "selection_index": 83,
+      "task_id": "180548",
+      "task_name": "YAML to JSON",
+      "input_type": "YAML",
+      "output_type": "JSON",
+      "stratum": "YAML"
+    },
+    {
+      "selection_index": 84,
+      "task_id": "000503",
+      "task_name": "Text to JSON",
+      "input_type": "Text",
+      "output_type": "JSON",
+      "stratum": "Text"
+    },
+    {
+      "selection_index": 85,
+      "task_id": "020548",
+      "task_name": "CSV to JSON",
+      "input_type": "CSV",
+      "output_type": "JSON",
+      "stratum": "CSV"
+    },
+    {
+      "selection_index": 86,
+      "task_id": "180528",
+      "task_name": "YAML to JSON",
+      "input_type": "YAML",
+      "output_type": "JSON",
+      "stratum": "YAML"
+    },
+    {
+      "selection_index": 87,
+      "task_id": "170510",
+      "task_name": "XML to JSON",
+      "input_type": "XML",
+      "output_type": "JSON",
+      "stratum": "XML"
+    },
+    {
+      "selection_index": 88,
+      "task_id": "100512",
+      "task_name": "TOML to JSON",
+      "input_type": "TOML",
+      "output_type": "JSON",
+      "stratum": "TOML"
+    },
+    {
+      "selection_index": 89,
+      "task_id": "180508",
+      "task_name": "YAML to JSON",
+      "input_type": "YAML",
+      "output_type": "JSON",
+      "stratum": "YAML"
+    },
+    {
+      "selection_index": 90,
+      "task_id": "000523",
+      "task_name": "Text to JSON",
+      "input_type": "Text",
+      "output_type": "JSON",
+      "stratum": "Text"
+    },
+    {
+      "selection_index": 91,
+      "task_id": "180522",
+      "task_name": "YAML to JSON",
+      "input_type": "YAML",
+      "output_type": "JSON",
+      "stratum": "YAML"
+    },
+    {
+      "selection_index": 92,
+      "task_id": "000521",
+      "task_name": "Text to JSON",
+      "input_type": "Text",
+      "output_type": "JSON",
+      "stratum": "Text"
+    },
+    {
+      "selection_index": 93,
+      "task_id": "100509",
+      "task_name": "TOML to JSON",
+      "input_type": "TOML",
+      "output_type": "JSON",
+      "stratum": "TOML"
+    },
+    {
+      "selection_index": 94,
+      "task_id": "020519",
+      "task_name": "CSV to JSON",
+      "input_type": "CSV",
+      "output_type": "JSON",
+      "stratum": "CSV"
+    },
+    {
+      "selection_index": 95,
+      "task_id": "000531",
+      "task_name": "Text to JSON",
+      "input_type": "Text",
+      "output_type": "JSON",
+      "stratum": "Text"
+    },
+    {
+      "selection_index": 96,
+      "task_id": "170514",
+      "task_name": "XML to JSON",
+      "input_type": "XML",
+      "output_type": "JSON",
+      "stratum": "XML"
+    },
+    {
+      "selection_index": 97,
+      "task_id": "170521",
+      "task_name": "XML to JSON",
+      "input_type": "XML",
+      "output_type": "JSON",
+      "stratum": "XML"
+    },
+    {
+      "selection_index": 98,
+      "task_id": "020522",
+      "task_name": "CSV to JSON",
+      "input_type": "CSV",
+      "output_type": "JSON",
+      "stratum": "CSV"
+    },
+    {
+      "selection_index": 99,
+      "task_id": "000504",
+      "task_name": "Text to JSON",
+      "input_type": "Text",
+      "output_type": "JSON",
+      "stratum": "Text"
+    }
+  ]
+}

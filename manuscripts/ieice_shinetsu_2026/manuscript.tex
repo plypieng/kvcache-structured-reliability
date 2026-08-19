@@ -1,0 +1,154 @@
+\documentclass[twocolumn,a4paper]{ieicejsp}
+\usepackage{newenum}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{amsmath}
+\usepackage{cite}
+\usepackage{balance}
+\usepackage{float}
+
+\title{{\bf KV-Cache Quantization and Structured-Output Reliability: A Paired Evaluation on StructEval-T}}
+\author{
+  Nantaphon Chimpalee \and
+  Akiko Manada
+}
+\affliate{
+  Department of Electrical, Electronics and Information Engineering,
+  Nagaoka University of Technology
+}
+
+\begin{document}
+\maketitle
+\balance
+\renewcommand{\tablename}{Table}
+\renewcommand{\refname}{References}
+\setlength{\intextsep}{3pt}
+\setlength{\textfloatsep}{4pt}
+\setlength{\floatsep}{4pt}
+\setlength{\abovecaptionskip}{2pt}
+\setlength{\belowcaptionskip}{1pt}
+
+\section{Introduction}
+Structured outputs such as JSON, YAML, and XML connect large language models
+(LLMs) to software \cite{structeval2026}.  They must be syntactically valid and
+contain the requested fields.  For example,
+\verb|{"city":"Nagaoka"}| is valid JSON, whereas \verb|{"city" "Nagaoka"}|
+cannot be parsed because the colon is missing.
+
+During autoregressive inference, a Key and Value (KV) cache stores the Key and
+Value representations of previous tokens.  KV-cache memory grows with sequence
+length and concurrent requests \cite{kwon2023pagedattention}.  To reduce this
+memory, KIVI applies low-bit quantization while preserving average
+language-task performance \cite{liu2024kivi}.
+
+Whether such average quality preservation also preserves structural validity
+remains unclear.  We therefore evaluate the official KIVI implementation on
+all 950 textual StructEval-T tasks after LongBench validation.  Paired and
+format-level analyses expose changes hidden by benchmark averages.
+
+\section{Experimental Setup}
+\noindent\textbf{Cache settings.} The official KIVI implementation and
+Mistral-7B-Instruct-v0.2 are used.  FP16 stores Keys and Values in 16-bit
+floating point; KIVI-4 and KIVI-2 quantize both to 4 and 2 bits, respectively,
+without changing the model weights.  Keys are quantized per channel and Values
+per token with group size 32; the latest 128 KV pairs remain in FP16.
+
+We checked implementation consistency on 3,550 examples from 15 English
+LongBench tasks \cite{bai2024longbench}.  Mean scores of 44.95 (FP16), 44.88
+(KIVI-4), and 43.86 (KIVI-2) reproduced the KIVI-4 preservation trend.
+
+\noindent\textbf{StructEval-T.}
+StructEval-T comprises 250 text-to-structure generation tasks and 700
+format-conversion tasks across CSV, JSON, TOML, XML, and YAML
+\cite{structeval2026}.  All conditions use identical prompts and greedy
+decoding with at most 2,048 generated tokens.
+
+For each task $i$, $p_i\in\{0,1\}$ indicates parse success.  A required field
+path identifies a nested field (e.g., \texttt{address.city}); $M_i$ is the
+number of required paths and $m_i$ the number present.  Thus $r_i=m_i/M_i$ and
+$s_i=0.2p_i+0.8r_i$.  Let $S_{\mathrm{gen}}$ and $S_{\mathrm{conv}}$ be the
+mean scores of the generation and conversion subsets; then
+$S_{\mathrm{T}}=(S_{\mathrm{gen}}+S_{\mathrm{conv}})/2$.
+
+Superscripts $16$ and $b$ denote FP16 and a $b$-bit cache.  Thus,
+$\mathcal{P}_b=\{i:p_i^{16}=1,p_i^b=0\}$ is the set of new parse failures, and
+$\mathcal{R}_b=\{i:r_i^b<r_i^{16}\}$ is the set of required-path regressions.
+
+\section{Results and Discussion}
+Table~\ref{tab:structeval} shows the benchmark results.
+\begin{table}[H]
+\centering
+\caption{Results for all 950 StructEval-T tasks.}
+\label{tab:structeval}
+\setlength{\tabcolsep}{5.0pt}
+\begin{tabular}{lrrrr}
+Cache & $S_{\mathrm{gen}}$ & $S_{\mathrm{conv}}$ & $S_{\mathrm{T}}$
+& \shortstack{Parse\\success} \\
+\hline
+FP16   & 0.6553 & 0.3485 & 0.5019 & 527/950 \\
+KIVI-4 & 0.6515 & 0.3846 & 0.5181 & 564/950 \\
+KIVI-2 & 0.5079 & 0.3405 & 0.4242 & 520/950 \\
+\hline
+\end{tabular}
+\end{table}
+
+KIVI-4 maintained $S_{\mathrm{T}}$ relative to FP16 ($0.5181$ versus $0.5019$),
+whereas KIVI-2 reduced it by $0.0777$.  Since FP16 parsed only 527/950 outputs,
+parseability was not guaranteed even under FP16.
+
+Table~\ref{tab:format} shows parse-success rates by output format.
+\begin{table}[H]
+\centering
+\caption{Parse success (\%) by output format.}
+\label{tab:format}
+\setlength{\tabcolsep}{2.5pt}
+{\scriptsize
+\begin{tabular}{lrrrrr}
+Cache & CSV & JSON & TOML & XML & YAML \\
+\hline
+FP16   & 100.0 & 51.6 & 8.0 & 26.0 & 56.8 \\
+KIVI-4 & 100.0 & 63.2 & 8.0 & 28.5 & 58.0 \\
+KIVI-2 & 100.0 & 37.2 & 4.0 & 46.0 & 53.2 \\
+\hline
+\end{tabular}
+}
+\end{table}
+
+Table~\ref{tab:format} reveals format-dependent behavior: KIVI-4 increased
+JSON parse success, whereas KIVI-2 reduced JSON but increased XML.  These
+differences are descriptive, not causal.  Benchmark scores also hide
+regressions: $|\mathcal{P}_4|=23$ and $|\mathcal{R}_4|=41$, while
+$|\mathcal{P}_2|=125$ and $|\mathcal{R}_2|=195$.  The counts motivate, but do
+not establish, the hypothesis that errors concentrate at delimiters, tags, and
+required fields.  We will test it by matched-budget position-aware protection.
+
+\section{Conclusion}
+For this model and 950 tasks, benchmark-score preservation did not ensure
+per-output structural reliability.  Future work will test higher precision at
+structure-critical positions under matched KV-cache storage.
+
+\scriptsize
+\begin{thebibliography}{9}
+\setlength{\itemsep}{0pt}
+\setlength{\parsep}{0pt}
+\setlength{\topsep}{0pt}
+\bibitem{kwon2023pagedattention}
+W. Kwon et al., ``Efficient Memory Management for Large Language Model Serving
+with PagedAttention,'' \emph{Proc. 29th ACM Symp. Oper. Syst. Principles
+(SOSP)}, pp. 611--626, 2023.
+
+\bibitem{liu2024kivi}
+Z. Liu et al., ``KIVI: A Tuning-Free Asymmetric 2bit Quantization for KV
+Cache,'' \emph{Proc. 41st Int. Conf. Mach. Learn. (ICML)}, vol. 235,
+pp. 32332--32344, 2024.
+
+\bibitem{bai2024longbench}
+Y. Bai et al., ``LongBench: A Bilingual, Multitask Benchmark for Long Context
+Understanding,'' \emph{Proc. 62nd Annu. Meeting Assoc. Comput. Linguistics
+(ACL)}, pp. 3119--3137, 2024.
+
+\bibitem{structeval2026}
+J. Yang et al., ``StructEval: Benchmarking LLMs' Capabilities to Generate
+Structural Outputs,'' \emph{Trans. Mach. Learn. Res.}, Jan. 2026.
+\end{thebibliography}
+
+\end{document}

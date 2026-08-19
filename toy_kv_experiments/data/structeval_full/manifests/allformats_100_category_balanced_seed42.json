@@ -1,0 +1,984 @@
+{
+  "manifest_version": 1,
+  "source_file": "structeval_test.jsonl",
+  "source_sha256": "d4d838145fbe285d0c446b449470512c0c4d3922422894c77aa6183913751bda",
+  "output_type": "ALL",
+  "sampling": "category-balanced",
+  "seed": 42,
+  "task_count": 100,
+  "category_counts": {
+    "T-conversion": 25,
+    "T-generation": 25,
+    "V-conversion": 25,
+    "V-generation": 25
+  },
+  "output_type_counts": {
+    "Angular": 9,
+    "CSV": 10,
+    "Canvas": 2,
+    "HTML": 8,
+    "JSON": 12,
+    "Latex": 2,
+    "Markdown": 1,
+    "Matplotlib": 2,
+    "Mermaid": 2,
+    "React": 8,
+    "SVG": 2,
+    "TOML": 5,
+    "TikZ": 2,
+    "Tikz": 2,
+    "Typst": 2,
+    "Vega": 2,
+    "Vue": 6,
+    "XML": 11,
+    "YAML": 12
+  },
+  "stratum_counts": {
+    "CSV->JSON": 2,
+    "CSV->XML": 2,
+    "CSV->YAML": 2,
+    "HTML->Angular": 2,
+    "HTML->React": 2,
+    "HTML->Vue": 2,
+    "JSON->CSV": 1,
+    "JSON->XML": 2,
+    "JSON->YAML": 2,
+    "Markdown->Angular": 3,
+    "Markdown->HTML": 2,
+    "Markdown->React": 2,
+    "Markdown->Vue": 2,
+    "Matplotlib->TikZ": 2,
+    "React->Angular": 2,
+    "React->HTML": 2,
+    "TOML->JSON": 2,
+    "TOML->YAML": 2,
+    "Text->Angular": 2,
+    "Text->CSV": 5,
+    "Text->Canvas": 2,
+    "Text->HTML": 2,
+    "Text->JSON": 5,
+    "Text->Latex": 2,
+    "Text->Markdown": 1,
+    "Text->Matplotlib": 2,
+    "Text->Mermaid": 2,
+    "Text->React": 2,
+    "Text->SVG": 2,
+    "Text->TOML": 5,
+    "Text->Tikz": 2,
+    "Text->Typst": 2,
+    "Text->Vega": 2,
+    "Text->Vue": 2,
+    "Text->XML": 5,
+    "Text->YAML": 5,
+    "Vue->HTML": 2,
+    "Vue->React": 2,
+    "XML->CSV": 2,
+    "XML->JSON": 1,
+    "XML->YAML": 1,
+    "YAML->CSV": 2,
+    "YAML->JSON": 2,
+    "YAML->XML": 2
+  },
+  "tasks": [
+    {
+      "selection_index": 0,
+      "task_id": "180529",
+      "task_name": "YAML to JSON",
+      "input_type": "YAML",
+      "output_type": "JSON",
+      "stratum": "YAML->JSON",
+      "leaderboard_category": "T-conversion"
+    },
+    {
+      "selection_index": 1,
+      "task_id": "020519",
+      "task_name": "CSV to JSON",
+      "input_type": "CSV",
+      "output_type": "JSON",
+      "stratum": "CSV->JSON",
+      "leaderboard_category": "T-conversion"
+    },
+    {
+      "selection_index": 2,
+      "task_id": "041620",
+      "task_name": "Convert HTML to Vue",
+      "input_type": "HTML",
+      "output_type": "Vue",
+      "stratum": "HTML->Vue",
+      "leaderboard_category": "V-conversion"
+    },
+    {
+      "selection_index": 3,
+      "task_id": "001018",
+      "task_name": "Text to TOML",
+      "input_type": "Text",
+      "output_type": "TOML",
+      "stratum": "Text->TOML",
+      "leaderboard_category": "T-generation"
+    },
+    {
+      "selection_index": 4,
+      "task_id": "001514",
+      "task_name": "Text to Vega",
+      "input_type": "Text",
+      "output_type": "Vega",
+      "stratum": "Text->Vega",
+      "leaderboard_category": "V-generation"
+    },
+    {
+      "selection_index": 5,
+      "task_id": "000839",
+      "task_name": "Text to Matplotlib",
+      "input_type": "Text",
+      "output_type": "Matplotlib",
+      "stratum": "Text->Matplotlib",
+      "leaderboard_category": "V-generation"
+    },
+    {
+      "selection_index": 6,
+      "task_id": "001826",
+      "task_name": "Text to YAML",
+      "input_type": "Text",
+      "output_type": "YAML",
+      "stratum": "Text->YAML",
+      "leaderboard_category": "T-generation"
+    },
+    {
+      "selection_index": 7,
+      "task_id": "000443",
+      "task_name": "Text to HTML",
+      "input_type": "Text",
+      "output_type": "HTML",
+      "stratum": "Text->HTML",
+      "leaderboard_category": "V-generation"
+    },
+    {
+      "selection_index": 8,
+      "task_id": "000511",
+      "task_name": "Text to JSON",
+      "input_type": "Text",
+      "output_type": "JSON",
+      "stratum": "Text->JSON",
+      "leaderboard_category": "T-generation"
+    },
+    {
+      "selection_index": 9,
+      "task_id": "071607",
+      "task_name": "Convert Markdown to Vue",
+      "input_type": "Markdown",
+      "output_type": "Vue",
+      "stratum": "Markdown->Vue",
+      "leaderboard_category": "V-conversion"
+    },
+    {
+      "selection_index": 10,
+      "task_id": "000937",
+      "task_name": "Text to Mermaid",
+      "input_type": "Text",
+      "output_type": "Mermaid",
+      "stratum": "Text->Mermaid",
+      "leaderboard_category": "V-generation"
+    },
+    {
+      "selection_index": 11,
+      "task_id": "000519",
+      "task_name": "Text to JSON",
+      "input_type": "Text",
+      "output_type": "JSON",
+      "stratum": "Text->JSON",
+      "leaderboard_category": "T-generation"
+    },
+    {
+      "selection_index": 12,
+      "task_id": "001219",
+      "task_name": "Text to SVG",
+      "input_type": "Text",
+      "output_type": "SVG",
+      "stratum": "Text->SVG",
+      "leaderboard_category": "V-generation"
+    },
+    {
+      "selection_index": 13,
+      "task_id": "00XX17",
+      "task_name": "Text to Latex",
+      "input_type": "Text",
+      "output_type": "Latex",
+      "stratum": "Text->Latex",
+      "leaderboard_category": "V-generation"
+    },
+    {
+      "selection_index": 14,
+      "task_id": "001400",
+      "task_name": "Text to Typst",
+      "input_type": "Text",
+      "output_type": "Typst",
+      "stratum": "Text->Typst",
+      "leaderboard_category": "V-generation"
+    },
+    {
+      "selection_index": 15,
+      "task_id": "181709",
+      "task_name": "YAML to XML",
+      "input_type": "YAML",
+      "output_type": "XML",
+      "stratum": "YAML->XML",
+      "leaderboard_category": "T-conversion"
+    },
+    {
+      "selection_index": 16,
+      "task_id": "180201",
+      "task_name": "YAML to CSV",
+      "input_type": "YAML",
+      "output_type": "CSV",
+      "stratum": "YAML->CSV",
+      "leaderboard_category": "T-conversion"
+    },
+    {
+      "selection_index": 17,
+      "task_id": "040100",
+      "task_name": "Convert HTML to Angular",
+      "input_type": "HTML",
+      "output_type": "Angular",
+      "stratum": "HTML->Angular",
+      "leaderboard_category": "V-conversion"
+    },
+    {
+      "selection_index": 18,
+      "task_id": "08XX51",
+      "task_name": "Convert Matplotlib to TikZ",
+      "input_type": "Matplotlib",
+      "output_type": "TikZ",
+      "stratum": "Matplotlib->TikZ",
+      "leaderboard_category": "V-conversion"
+    },
+    {
+      "selection_index": 19,
+      "task_id": "171806",
+      "task_name": "XML to YAML",
+      "input_type": "XML",
+      "output_type": "YAML",
+      "stratum": "XML->YAML",
+      "leaderboard_category": "T-conversion"
+    },
+    {
+      "selection_index": 20,
+      "task_id": "021810",
+      "task_name": "CSV to YAML",
+      "input_type": "CSV",
+      "output_type": "YAML",
+      "stratum": "CSV->YAML",
+      "leaderboard_category": "T-conversion"
+    },
+    {
+      "selection_index": 21,
+      "task_id": "001839",
+      "task_name": "Text to YAML",
+      "input_type": "Text",
+      "output_type": "YAML",
+      "stratum": "Text->YAML",
+      "leaderboard_category": "T-generation"
+    },
+    {
+      "selection_index": 22,
+      "task_id": "100519",
+      "task_name": "TOML to JSON",
+      "input_type": "TOML",
+      "output_type": "JSON",
+      "stratum": "TOML->JSON",
+      "leaderboard_category": "T-conversion"
+    },
+    {
+      "selection_index": 23,
+      "task_id": "041121",
+      "task_name": "Convert HTML to React",
+      "input_type": "HTML",
+      "output_type": "React",
+      "stratum": "HTML->React",
+      "leaderboard_category": "V-conversion"
+    },
+    {
+      "selection_index": 24,
+      "task_id": "040102",
+      "task_name": "Convert HTML to Angular",
+      "input_type": "HTML",
+      "output_type": "Angular",
+      "stratum": "HTML->Angular",
+      "leaderboard_category": "V-conversion"
+    },
+    {
+      "selection_index": 25,
+      "task_id": "021717",
+      "task_name": "CSV to XML",
+      "input_type": "CSV",
+      "output_type": "XML",
+      "stratum": "CSV->XML",
+      "leaderboard_category": "T-conversion"
+    },
+    {
+      "selection_index": 26,
+      "task_id": "160436",
+      "task_name": "Convert Vue to HTML",
+      "input_type": "Vue",
+      "output_type": "HTML",
+      "stratum": "Vue->HTML",
+      "leaderboard_category": "V-conversion"
+    },
+    {
+      "selection_index": 27,
+      "task_id": "101841",
+      "task_name": "TOML to YAML",
+      "input_type": "TOML",
+      "output_type": "YAML",
+      "stratum": "TOML->YAML",
+      "leaderboard_category": "T-conversion"
+    },
+    {
+      "selection_index": 28,
+      "task_id": "070105",
+      "task_name": "Convert Markdown to Angular",
+      "input_type": "Markdown",
+      "output_type": "Angular",
+      "stratum": "Markdown->Angular",
+      "leaderboard_category": "V-conversion"
+    },
+    {
+      "selection_index": 29,
+      "task_id": "051745",
+      "task_name": "JSON to XML",
+      "input_type": "JSON",
+      "output_type": "XML",
+      "stratum": "JSON->XML",
+      "leaderboard_category": "T-conversion"
+    },
+    {
+      "selection_index": 30,
+      "task_id": "000241",
+      "task_name": "Text to CSV",
+      "input_type": "Text",
+      "output_type": "CSV",
+      "stratum": "Text->CSV",
+      "leaderboard_category": "T-generation"
+    },
+    {
+      "selection_index": 31,
+      "task_id": "051714",
+      "task_name": "JSON to XML",
+      "input_type": "JSON",
+      "output_type": "XML",
+      "stratum": "JSON->XML",
+      "leaderboard_category": "T-conversion"
+    },
+    {
+      "selection_index": 32,
+      "task_id": "001428",
+      "task_name": "Text to Typst",
+      "input_type": "Text",
+      "output_type": "Typst",
+      "stratum": "Text->Typst",
+      "leaderboard_category": "V-generation"
+    },
+    {
+      "selection_index": 33,
+      "task_id": "000800",
+      "task_name": "Text to Matplotlib",
+      "input_type": "Text",
+      "output_type": "Matplotlib",
+      "stratum": "Text->Matplotlib",
+      "leaderboard_category": "V-generation"
+    },
+    {
+      "selection_index": 34,
+      "task_id": "001620",
+      "task_name": "Text to Vue",
+      "input_type": "Text",
+      "output_type": "Vue",
+      "stratum": "Text->Vue",
+      "leaderboard_category": "V-generation"
+    },
+    {
+      "selection_index": 35,
+      "task_id": "021845",
+      "task_name": "CSV to YAML",
+      "input_type": "CSV",
+      "output_type": "YAML",
+      "stratum": "CSV->YAML",
+      "leaderboard_category": "T-conversion"
+    },
+    {
+      "selection_index": 36,
+      "task_id": "070402",
+      "task_name": "Convert Markdown to HTML",
+      "input_type": "Markdown",
+      "output_type": "HTML",
+      "stratum": "Markdown->HTML",
+      "leaderboard_category": "V-conversion"
+    },
+    {
+      "selection_index": 37,
+      "task_id": "001545",
+      "task_name": "Text to Vega",
+      "input_type": "Text",
+      "output_type": "Vega",
+      "stratum": "Text->Vega",
+      "leaderboard_category": "V-generation"
+    },
+    {
+      "selection_index": 38,
+      "task_id": "071114",
+      "task_name": "Convert Markdown to React",
+      "input_type": "Markdown",
+      "output_type": "React",
+      "stratum": "Markdown->React",
+      "leaderboard_category": "V-conversion"
+    },
+    {
+      "selection_index": 39,
+      "task_id": "001705",
+      "task_name": "Text to XML",
+      "input_type": "Text",
+      "output_type": "XML",
+      "stratum": "Text->XML",
+      "leaderboard_category": "T-generation"
+    },
+    {
+      "selection_index": 40,
+      "task_id": "050216",
+      "task_name": "JSON to CSV",
+      "input_type": "JSON",
+      "output_type": "CSV",
+      "stratum": "JSON->CSV",
+      "leaderboard_category": "T-conversion"
+    },
+    {
+      "selection_index": 41,
+      "task_id": "000219",
+      "task_name": "Text to CSV",
+      "input_type": "Text",
+      "output_type": "CSV",
+      "stratum": "Text->CSV",
+      "leaderboard_category": "T-generation"
+    },
+    {
+      "selection_index": 42,
+      "task_id": "170214",
+      "task_name": "XML to CSV",
+      "input_type": "XML",
+      "output_type": "CSV",
+      "stratum": "XML->CSV",
+      "leaderboard_category": "T-conversion"
+    },
+    {
+      "selection_index": 43,
+      "task_id": "101835",
+      "task_name": "TOML to YAML",
+      "input_type": "TOML",
+      "output_type": "YAML",
+      "stratum": "TOML->YAML",
+      "leaderboard_category": "T-conversion"
+    },
+    {
+      "selection_index": 44,
+      "task_id": "000209",
+      "task_name": "Text to CSV",
+      "input_type": "Text",
+      "output_type": "CSV",
+      "stratum": "Text->CSV",
+      "leaderboard_category": "T-generation"
+    },
+    {
+      "selection_index": 45,
+      "task_id": "001325",
+      "task_name": "Text to Tikz",
+      "input_type": "Text",
+      "output_type": "Tikz",
+      "stratum": "Text->Tikz",
+      "leaderboard_category": "V-generation"
+    },
+    {
+      "selection_index": 46,
+      "task_id": "001603",
+      "task_name": "Text to Vue",
+      "input_type": "Text",
+      "output_type": "Vue",
+      "stratum": "Text->Vue",
+      "leaderboard_category": "V-generation"
+    },
+    {
+      "selection_index": 47,
+      "task_id": "000902",
+      "task_name": "Text to Mermaid",
+      "input_type": "Text",
+      "output_type": "Mermaid",
+      "stratum": "Text->Mermaid",
+      "leaderboard_category": "V-generation"
+    },
+    {
+      "selection_index": 48,
+      "task_id": "001728",
+      "task_name": "Text to XML",
+      "input_type": "Text",
+      "output_type": "XML",
+      "stratum": "Text->XML",
+      "leaderboard_category": "T-generation"
+    },
+    {
+      "selection_index": 49,
+      "task_id": "180206",
+      "task_name": "YAML to CSV",
+      "input_type": "YAML",
+      "output_type": "CSV",
+      "stratum": "YAML->CSV",
+      "leaderboard_category": "T-conversion"
+    },
+    {
+      "selection_index": 50,
+      "task_id": "070101",
+      "task_name": "Convert Markdown to Angular",
+      "input_type": "Markdown",
+      "output_type": "Angular",
+      "stratum": "Markdown->Angular",
+      "leaderboard_category": "V-conversion"
+    },
+    {
+      "selection_index": 51,
+      "task_id": "100518",
+      "task_name": "TOML to JSON",
+      "input_type": "TOML",
+      "output_type": "JSON",
+      "stratum": "TOML->JSON",
+      "leaderboard_category": "T-conversion"
+    },
+    {
+      "selection_index": 52,
+      "task_id": "001748",
+      "task_name": "Text to XML",
+      "input_type": "Text",
+      "output_type": "XML",
+      "stratum": "Text->XML",
+      "leaderboard_category": "T-generation"
+    },
+    {
+      "selection_index": 53,
+      "task_id": "001134",
+      "task_name": "Text to React",
+      "input_type": "Text",
+      "output_type": "React",
+      "stratum": "Text->React",
+      "leaderboard_category": "V-generation"
+    },
+    {
+      "selection_index": 54,
+      "task_id": "001818",
+      "task_name": "Text to YAML",
+      "input_type": "Text",
+      "output_type": "YAML",
+      "stratum": "Text->YAML",
+      "leaderboard_category": "T-generation"
+    },
+    {
+      "selection_index": 55,
+      "task_id": "170536",
+      "task_name": "XML to JSON",
+      "input_type": "XML",
+      "output_type": "JSON",
+      "stratum": "XML->JSON",
+      "leaderboard_category": "T-conversion"
+    },
+    {
+      "selection_index": 56,
+      "task_id": "000308",
+      "task_name": "Text to Canvas",
+      "input_type": "Text",
+      "output_type": "Canvas",
+      "stratum": "Text->Canvas",
+      "leaderboard_category": "V-generation"
+    },
+    {
+      "selection_index": 57,
+      "task_id": "001245",
+      "task_name": "Text to SVG",
+      "input_type": "Text",
+      "output_type": "SVG",
+      "stratum": "Text->SVG",
+      "leaderboard_category": "V-generation"
+    },
+    {
+      "selection_index": 58,
+      "task_id": "001737",
+      "task_name": "Text to XML",
+      "input_type": "Text",
+      "output_type": "XML",
+      "stratum": "Text->XML",
+      "leaderboard_category": "T-generation"
+    },
+    {
+      "selection_index": 59,
+      "task_id": "000719",
+      "task_name": "Text to Markdown",
+      "input_type": "Text",
+      "output_type": "Markdown",
+      "stratum": "Text->Markdown",
+      "leaderboard_category": "V-generation"
+    },
+    {
+      "selection_index": 60,
+      "task_id": "001017",
+      "task_name": "Text to TOML",
+      "input_type": "Text",
+      "output_type": "TOML",
+      "stratum": "Text->TOML",
+      "leaderboard_category": "T-generation"
+    },
+    {
+      "selection_index": 61,
+      "task_id": "000523",
+      "task_name": "Text to JSON",
+      "input_type": "Text",
+      "output_type": "JSON",
+      "stratum": "Text->JSON",
+      "leaderboard_category": "T-generation"
+    },
+    {
+      "selection_index": 62,
+      "task_id": "001830",
+      "task_name": "Text to YAML",
+      "input_type": "Text",
+      "output_type": "YAML",
+      "stratum": "Text->YAML",
+      "leaderboard_category": "T-generation"
+    },
+    {
+      "selection_index": 63,
+      "task_id": "000138",
+      "task_name": "Text to Angular",
+      "input_type": "Text",
+      "output_type": "Angular",
+      "stratum": "Text->Angular",
+      "leaderboard_category": "V-generation"
+    },
+    {
+      "selection_index": 64,
+      "task_id": "161107",
+      "task_name": "Convert Vue to React",
+      "input_type": "Vue",
+      "output_type": "React",
+      "stratum": "Vue->React",
+      "leaderboard_category": "V-conversion"
+    },
+    {
+      "selection_index": 65,
+      "task_id": "001014",
+      "task_name": "Text to TOML",
+      "input_type": "Text",
+      "output_type": "TOML",
+      "stratum": "Text->TOML",
+      "leaderboard_category": "T-generation"
+    },
+    {
+      "selection_index": 66,
+      "task_id": "041635",
+      "task_name": "Convert HTML to Vue",
+      "input_type": "HTML",
+      "output_type": "Vue",
+      "stratum": "HTML->Vue",
+      "leaderboard_category": "V-conversion"
+    },
+    {
+      "selection_index": 67,
+      "task_id": "051821",
+      "task_name": "JSON to YAML",
+      "input_type": "JSON",
+      "output_type": "YAML",
+      "stratum": "JSON->YAML",
+      "leaderboard_category": "T-conversion"
+    },
+    {
+      "selection_index": 68,
+      "task_id": "071608",
+      "task_name": "Convert Markdown to Vue",
+      "input_type": "Markdown",
+      "output_type": "Vue",
+      "stratum": "Markdown->Vue",
+      "leaderboard_category": "V-conversion"
+    },
+    {
+      "selection_index": 69,
+      "task_id": "000504",
+      "task_name": "Text to JSON",
+      "input_type": "Text",
+      "output_type": "JSON",
+      "stratum": "Text->JSON",
+      "leaderboard_category": "T-generation"
+    },
+    {
+      "selection_index": 70,
+      "task_id": "000525",
+      "task_name": "Text to JSON",
+      "input_type": "Text",
+      "output_type": "JSON",
+      "stratum": "Text->JSON",
+      "leaderboard_category": "T-generation"
+    },
+    {
+      "selection_index": 71,
+      "task_id": "160439",
+      "task_name": "Convert Vue to HTML",
+      "input_type": "Vue",
+      "output_type": "HTML",
+      "stratum": "Vue->HTML",
+      "leaderboard_category": "V-conversion"
+    },
+    {
+      "selection_index": 72,
+      "task_id": "000415",
+      "task_name": "Text to HTML",
+      "input_type": "Text",
+      "output_type": "HTML",
+      "stratum": "Text->HTML",
+      "leaderboard_category": "V-generation"
+    },
+    {
+      "selection_index": 73,
+      "task_id": "110101",
+      "task_name": "Convert React to Angular",
+      "input_type": "React",
+      "output_type": "Angular",
+      "stratum": "React->Angular",
+      "leaderboard_category": "V-conversion"
+    },
+    {
+      "selection_index": 74,
+      "task_id": "001301",
+      "task_name": "Text to Tikz",
+      "input_type": "Text",
+      "output_type": "Tikz",
+      "stratum": "Text->Tikz",
+      "leaderboard_category": "V-generation"
+    },
+    {
+      "selection_index": 75,
+      "task_id": "110410",
+      "task_name": "Convert React to HTML",
+      "input_type": "React",
+      "output_type": "HTML",
+      "stratum": "React->HTML",
+      "leaderboard_category": "V-conversion"
+    },
+    {
+      "selection_index": 76,
+      "task_id": "170246",
+      "task_name": "XML to CSV",
+      "input_type": "XML",
+      "output_type": "CSV",
+      "stratum": "XML->CSV",
+      "leaderboard_category": "T-conversion"
+    },
+    {
+      "selection_index": 77,
+      "task_id": "000317",
+      "task_name": "Text to Canvas",
+      "input_type": "Text",
+      "output_type": "Canvas",
+      "stratum": "Text->Canvas",
+      "leaderboard_category": "V-generation"
+    },
+    {
+      "selection_index": 78,
+      "task_id": "041114",
+      "task_name": "Convert HTML to React",
+      "input_type": "HTML",
+      "output_type": "React",
+      "stratum": "HTML->React",
+      "leaderboard_category": "V-conversion"
+    },
+    {
+      "selection_index": 79,
+      "task_id": "110438",
+      "task_name": "Convert React to HTML",
+      "input_type": "React",
+      "output_type": "HTML",
+      "stratum": "React->HTML",
+      "leaderboard_category": "V-conversion"
+    },
+    {
+      "selection_index": 80,
+      "task_id": "001137",
+      "task_name": "Text to React",
+      "input_type": "Text",
+      "output_type": "React",
+      "stratum": "Text->React",
+      "leaderboard_category": "V-generation"
+    },
+    {
+      "selection_index": 81,
+      "task_id": "051846",
+      "task_name": "JSON to YAML",
+      "input_type": "JSON",
+      "output_type": "YAML",
+      "stratum": "JSON->YAML",
+      "leaderboard_category": "T-conversion"
+    },
+    {
+      "selection_index": 82,
+      "task_id": "020527",
+      "task_name": "CSV to JSON",
+      "input_type": "CSV",
+      "output_type": "JSON",
+      "stratum": "CSV->JSON",
+      "leaderboard_category": "T-conversion"
+    },
+    {
+      "selection_index": 83,
+      "task_id": "08XX83",
+      "task_name": "Convert Matplotlib to TikZ",
+      "input_type": "Matplotlib",
+      "output_type": "TikZ",
+      "stratum": "Matplotlib->TikZ",
+      "leaderboard_category": "V-conversion"
+    },
+    {
+      "selection_index": 84,
+      "task_id": "071107",
+      "task_name": "Convert Markdown to React",
+      "input_type": "Markdown",
+      "output_type": "React",
+      "stratum": "Markdown->React",
+      "leaderboard_category": "V-conversion"
+    },
+    {
+      "selection_index": 85,
+      "task_id": "001022",
+      "task_name": "Text to TOML",
+      "input_type": "Text",
+      "output_type": "TOML",
+      "stratum": "Text->TOML",
+      "leaderboard_category": "T-generation"
+    },
+    {
+      "selection_index": 86,
+      "task_id": "000105",
+      "task_name": "Text to Angular",
+      "input_type": "Text",
+      "output_type": "Angular",
+      "stratum": "Text->Angular",
+      "leaderboard_category": "V-generation"
+    },
+    {
+      "selection_index": 87,
+      "task_id": "070108",
+      "task_name": "Convert Markdown to Angular",
+      "input_type": "Markdown",
+      "output_type": "Angular",
+      "stratum": "Markdown->Angular",
+      "leaderboard_category": "V-conversion"
+    },
+    {
+      "selection_index": 88,
+      "task_id": "001823",
+      "task_name": "Text to YAML",
+      "input_type": "Text",
+      "output_type": "YAML",
+      "stratum": "Text->YAML",
+      "leaderboard_category": "T-generation"
+    },
+    {
+      "selection_index": 89,
+      "task_id": "00XX45",
+      "task_name": "Text to Latex",
+      "input_type": "Text",
+      "output_type": "Latex",
+      "stratum": "Text->Latex",
+      "leaderboard_category": "V-generation"
+    },
+    {
+      "selection_index": 90,
+      "task_id": "070410",
+      "task_name": "Convert Markdown to HTML",
+      "input_type": "Markdown",
+      "output_type": "HTML",
+      "stratum": "Markdown->HTML",
+      "leaderboard_category": "V-conversion"
+    },
+    {
+      "selection_index": 91,
+      "task_id": "000213",
+      "task_name": "Text to CSV",
+      "input_type": "Text",
+      "output_type": "CSV",
+      "stratum": "Text->CSV",
+      "leaderboard_category": "T-generation"
+    },
+    {
+      "selection_index": 92,
+      "task_id": "001713",
+      "task_name": "Text to XML",
+      "input_type": "Text",
+      "output_type": "XML",
+      "stratum": "Text->XML",
+      "leaderboard_category": "T-generation"
+    },
+    {
+      "selection_index": 93,
+      "task_id": "180527",
+      "task_name": "YAML to JSON",
+      "input_type": "YAML",
+      "output_type": "JSON",
+      "stratum": "YAML->JSON",
+      "leaderboard_category": "T-conversion"
+    },
+    {
+      "selection_index": 94,
+      "task_id": "181746",
+      "task_name": "YAML to XML",
+      "input_type": "YAML",
+      "output_type": "XML",
+      "stratum": "YAML->XML",
+      "leaderboard_category": "T-conversion"
+    },
+    {
+      "selection_index": 95,
+      "task_id": "021742",
+      "task_name": "CSV to XML",
+      "input_type": "CSV",
+      "output_type": "XML",
+      "stratum": "CSV->XML",
+      "leaderboard_category": "T-conversion"
+    },
+    {
+      "selection_index": 96,
+      "task_id": "161105",
+      "task_name": "Convert Vue to React",
+      "input_type": "Vue",
+      "output_type": "React",
+      "stratum": "Vue->React",
+      "leaderboard_category": "V-conversion"
+    },
+    {
+      "selection_index": 97,
+      "task_id": "000242",
+      "task_name": "Text to CSV",
+      "input_type": "Text",
+      "output_type": "CSV",
+      "stratum": "Text->CSV",
+      "leaderboard_category": "T-generation"
+    },
+    {
+      "selection_index": 98,
+      "task_id": "001010",
+      "task_name": "Text to TOML",
+      "input_type": "Text",
+      "output_type": "TOML",
+      "stratum": "Text->TOML",
+      "leaderboard_category": "T-generation"
+    },
+    {
+      "selection_index": 99,
+      "task_id": "110102",
+      "task_name": "Convert React to Angular",
+      "input_type": "React",
+      "output_type": "Angular",
+      "stratum": "React->Angular",
+      "leaderboard_category": "V-conversion"
+    }
+  ]
+}

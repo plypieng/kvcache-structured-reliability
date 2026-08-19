@@ -1,0 +1,194 @@
+{
+  "scope": "complete paired StructEval-T analysis",
+  "fp16_file": "artifacts/structeval_t_20260731/fp16/evaluation.json",
+  "candidate_files": {
+    "KIVI-4": "artifacts/structeval_t_20260731/kivi4/evaluation.json",
+    "KIVI-2": "artifacts/structeval_t_20260731/kivi2/evaluation.json"
+  },
+  "bootstrap_samples": 10000,
+  "seed": 42,
+  "conditions": {
+    "KIVI-4": {
+      "condition": "KIVI-4",
+      "tasks": 950,
+      "parse_transitions": {
+        "both_pass": 504,
+        "both_fail": 363,
+        "fp16_only": 23,
+        "candidate_only": 60
+      },
+      "parse_mcnemar_exact_two_sided_p": 5.973595638605141e-05,
+      "score_transitions": {
+        "unchanged": 825,
+        "regressed": 47,
+        "improved": 78
+      },
+      "required_path_transitions": {
+        "unchanged": 844,
+        "regressed": 41,
+        "improved": 65
+      },
+      "task_weighted_mean_score_delta": 0.025631578947368422,
+      "task_weighted_mean_score_delta_95ci": [
+        0.0098,
+        0.042179210526315784
+      ],
+      "category_mean_score_deltas": {
+        "T-generation": -0.0038,
+        "T-conversion": 0.03614285714285714
+      },
+      "structeval_t_delta": 0.016171428571428573,
+      "structeval_t_delta_95ci": [
+        0.002646928571428569,
+        0.029743642857142847
+      ],
+      "mean_required_path_delta": 0.022263559120334845,
+      "mean_required_path_delta_95ci": [
+        0.00588888151092342,
+        0.03875872299750925
+      ],
+      "parse_transitions_by_output_type": {
+        "CSV": {
+          "both_pass": 200
+        },
+        "JSON": {
+          "both_pass": 119,
+          "both_fail": 82,
+          "candidate_only": 39,
+          "fp16_only": 10
+        },
+        "TOML": {
+          "both_fail": 46,
+          "both_pass": 4
+        },
+        "XML": {
+          "both_pass": 51,
+          "both_fail": 142,
+          "fp16_only": 1,
+          "candidate_only": 6
+        },
+        "YAML": {
+          "both_pass": 130,
+          "candidate_only": 15,
+          "both_fail": 93,
+          "fp16_only": 12
+        }
+      },
+      "parse_transitions_by_category": {
+        "T-conversion": {
+          "candidate_only": 58,
+          "both_fail": 310,
+          "both_pass": 310,
+          "fp16_only": 22
+        },
+        "T-generation": {
+          "both_pass": 194,
+          "both_fail": 53,
+          "fp16_only": 1,
+          "candidate_only": 2
+        }
+      },
+      "automatic_failure_types": {
+        "extra_content_or_multiple_roots": 1,
+        "invalid_leading_token": 10,
+        "indentation_or_mapping_syntax": 12
+      },
+      "diagnostic_boundary": "Automatic failure types describe parser-visible surface errors. They do not identify which cached token or layer caused the error."
+    },
+    "KIVI-2": {
+      "condition": "KIVI-2",
+      "tasks": 950,
+      "parse_transitions": {
+        "both_pass": 402,
+        "both_fail": 305,
+        "fp16_only": 125,
+        "candidate_only": 118
+      },
+      "parse_mcnemar_exact_two_sided_p": 0.7003952678088791,
+      "score_transitions": {
+        "unchanged": 573,
+        "improved": 162,
+        "regressed": 215
+      },
+      "required_path_transitions": {
+        "unchanged": 622,
+        "improved": 133,
+        "regressed": 195
+      },
+      "task_weighted_mean_score_delta": -0.04465263157894737,
+      "task_weighted_mean_score_delta_95ci": [
+        -0.07154736842105264,
+        -0.017168157894736847
+      ],
+      "category_mean_score_deltas": {
+        "T-generation": -0.14736000000000002,
+        "T-conversion": -0.007971428571428572
+      },
+      "structeval_t_delta": -0.0776657142857143,
+      "structeval_t_delta_95ci": [
+        -0.10691060714285715,
+        -0.049082821428571455
+      ],
+      "mean_required_path_delta": -0.05401472602639084,
+      "mean_required_path_delta_95ci": [
+        -0.08130127405505469,
+        -0.026452767846891743
+      ],
+      "parse_transitions_by_output_type": {
+        "CSV": {
+          "both_pass": 200
+        },
+        "JSON": {
+          "both_pass": 74,
+          "both_fail": 102,
+          "fp16_only": 55,
+          "candidate_only": 19
+        },
+        "TOML": {
+          "both_fail": 44,
+          "fp16_only": 4,
+          "candidate_only": 2
+        },
+        "XML": {
+          "fp16_only": 15,
+          "both_pass": 37,
+          "candidate_only": 55,
+          "both_fail": 93
+        },
+        "YAML": {
+          "both_pass": 91,
+          "fp16_only": 51,
+          "both_fail": 66,
+          "candidate_only": 42
+        }
+      },
+      "parse_transitions_by_category": {
+        "T-conversion": {
+          "both_fail": 257,
+          "candidate_only": 111,
+          "fp16_only": 94,
+          "both_pass": 238
+        },
+        "T-generation": {
+          "both_pass": 164,
+          "both_fail": 48,
+          "fp16_only": 31,
+          "candidate_only": 7
+        }
+      },
+      "automatic_failure_types": {
+        "unbalanced_or_mismatched_delimiter": 7,
+        "invalid_key_syntax": 4,
+        "missing_end_marker": 10,
+        "invalid_token": 3,
+        "extra_content_or_multiple_roots": 3,
+        "other_parser_error": 7,
+        "missing_begin_marker": 42,
+        "invalid_leading_token": 30,
+        "literal_escaped_layout_outside_string": 6,
+        "indentation_or_mapping_syntax": 13
+      },
+      "diagnostic_boundary": "Automatic failure types describe parser-visible surface errors. They do not identify which cached token or layer caused the error."
+    }
+  }
+}

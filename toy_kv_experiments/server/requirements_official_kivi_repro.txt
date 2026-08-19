@@ -1,0 +1,15 @@
+# Paper-era KIVI runtime and official LongBench metric dependencies.
+transformers==4.36.2
+accelerate==0.25.0
+tokenizers==0.15.0
+huggingface-hub==0.20.2
+sentencepiece
+protobuf
+packaging==24.0
+setuptools==69.2.0
+datasets==2.16.1
+numpy==1.26.3
+rouge==1.0.1
+fuzzywuzzy==0.18.0
+jieba==0.42.1
+flash-attn @ https://github.com/Dao-AILab/flash-attention/releases/download/v2.5.6/flash_attn-2.5.6%2Bcu122torch2.1cxx11abiFALSE-cp310-cp310-linux_x86_64.whl

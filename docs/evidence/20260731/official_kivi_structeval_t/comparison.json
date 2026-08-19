@@ -1,0 +1,883 @@
+{
+  "scope": "complete StructEval-T paired comparison",
+  "conditions": {
+    "FP16": {
+      "scope": "StructEval-T",
+      "complete_scope": true,
+      "dataset_rows": 950,
+      "expected_rows": 950,
+      "unscored_task_ids": [],
+      "rendered_task_ids": [],
+      "categories": {
+        "T-generation": {
+          "count": 250,
+          "mean_score": 0.65528,
+          "parse_success_count": 195,
+          "parse_success_rate": 0.78,
+          "mean_required_path_score": 0.624231,
+          "perfect_score_count": 106
+        },
+        "T-conversion": {
+          "count": 700,
+          "mean_score": 0.348486,
+          "parse_success_count": 332,
+          "parse_success_rate": 0.474286,
+          "mean_required_path_score": 0.316616,
+          "perfect_score_count": 123
+        }
+      },
+      "t_track_unweighted_mean": 0.501883,
+      "task_weighted_mean": 0.429221,
+      "by_output_type": {
+        "CSV": {
+          "count": 200,
+          "mean_score": 0.72975,
+          "parse_success_count": 200,
+          "parse_success_rate": 1.0,
+          "mean_required_path_score": 0.660703,
+          "perfect_score_count": 40
+        },
+        "JSON": {
+          "count": 250,
+          "mean_score": 0.43832,
+          "parse_success_count": 129,
+          "parse_success_rate": 0.516,
+          "mean_required_path_score": 0.41892,
+          "perfect_score_count": 93
+        },
+        "TOML": {
+          "count": 50,
+          "mean_score": 0.0594,
+          "parse_success_count": 4,
+          "parse_success_rate": 0.08,
+          "mean_required_path_score": 0.054167,
+          "perfect_score_count": 2
+        },
+        "XML": {
+          "count": 200,
+          "mean_score": 0.1706,
+          "parse_success_count": 52,
+          "parse_success_rate": 0.26,
+          "mean_required_path_score": 0.148269,
+          "perfect_score_count": 5
+        },
+        "YAML": {
+          "count": 250,
+          "mean_score": 0.46056,
+          "parse_success_count": 142,
+          "parse_success_rate": 0.568,
+          "mean_required_path_score": 0.433824,
+          "perfect_score_count": 89
+        }
+      }
+    },
+    "KIVI-4": {
+      "scope": "StructEval-T",
+      "complete_scope": true,
+      "dataset_rows": 950,
+      "expected_rows": 950,
+      "unscored_task_ids": [],
+      "rendered_task_ids": [],
+      "categories": {
+        "T-generation": {
+          "count": 250,
+          "mean_score": 0.65148,
+          "parse_success_count": 196,
+          "parse_success_rate": 0.784,
+          "mean_required_path_score": 0.618431,
+          "perfect_score_count": 105
+        },
+        "T-conversion": {
+          "count": 700,
+          "mean_score": 0.384629,
+          "parse_success_count": 368,
+          "parse_success_rate": 0.525714,
+          "mean_required_path_score": 0.348902,
+          "perfect_score_count": 142
+        }
+      },
+      "t_track_unweighted_mean": 0.518054,
+      "task_weighted_mean": 0.454853,
+      "by_output_type": {
+        "CSV": {
+          "count": 200,
+          "mean_score": 0.7205,
+          "parse_success_count": 200,
+          "parse_success_rate": 1.0,
+          "mean_required_path_score": 0.649074,
+          "perfect_score_count": 38
+        },
+        "JSON": {
+          "count": 250,
+          "mean_score": 0.52384,
+          "parse_success_count": 158,
+          "parse_success_rate": 0.632,
+          "mean_required_path_score": 0.496772,
+          "perfect_score_count": 109
+        },
+        "TOML": {
+          "count": 50,
+          "mean_score": 0.0594,
+          "parse_success_count": 4,
+          "parse_success_rate": 0.08,
+          "mean_required_path_score": 0.054167,
+          "perfect_score_count": 2
+        },
+        "XML": {
+          "count": 200,
+          "mean_score": 0.17565,
+          "parse_success_count": 57,
+          "parse_success_rate": 0.285,
+          "mean_required_path_score": 0.148356,
+          "perfect_score_count": 5
+        },
+        "YAML": {
+          "count": 250,
+          "mean_score": 0.4758,
+          "parse_success_count": 145,
+          "parse_success_rate": 0.58,
+          "mean_required_path_score": 0.449808,
+          "perfect_score_count": 93
+        }
+      }
+    },
+    "KIVI-2": {
+      "scope": "StructEval-T",
+      "complete_scope": true,
+      "dataset_rows": 950,
+      "expected_rows": 950,
+      "unscored_task_ids": [],
+      "rendered_task_ids": [],
+      "categories": {
+        "T-generation": {
+          "count": 250,
+          "mean_score": 0.50792,
+          "parse_success_count": 171,
+          "parse_success_rate": 0.684,
+          "mean_required_path_score": 0.463695,
+          "perfect_score_count": 67
+        },
+        "T-conversion": {
+          "count": 700,
+          "mean_score": 0.340514,
+          "parse_success_count": 349,
+          "parse_success_rate": 0.498571,
+          "mean_required_path_score": 0.300644,
+          "perfect_score_count": 104
+        }
+      },
+      "t_track_unweighted_mean": 0.424217,
+      "task_weighted_mean": 0.384568,
+      "by_output_type": {
+        "CSV": {
+          "count": 200,
+          "mean_score": 0.6254,
+          "parse_success_count": 200,
+          "parse_success_rate": 1.0,
+          "mean_required_path_score": 0.530238,
+          "perfect_score_count": 27
+        },
+        "JSON": {
+          "count": 250,
+          "mean_score": 0.317,
+          "parse_success_count": 93,
+          "parse_success_rate": 0.372,
+          "mean_required_path_score": 0.303224,
+          "perfect_score_count": 52
+        },
+        "TOML": {
+          "count": 50,
+          "mean_score": 0.0168,
+          "parse_success_count": 2,
+          "parse_success_rate": 0.04,
+          "mean_required_path_score": 0.011111,
+          "perfect_score_count": 0
+        },
+        "XML": {
+          "count": 200,
+          "mean_score": 0.2573,
+          "parse_success_count": 92,
+          "parse_success_rate": 0.46,
+          "mean_required_path_score": 0.206709,
+          "perfect_score_count": 14
+        },
+        "YAML": {
+          "count": 250,
+          "mean_score": 0.43484,
+          "parse_success_count": 133,
+          "parse_success_rate": 0.532,
+          "mean_required_path_score": 0.410495,
+          "perfect_score_count": 78
+        }
+      }
+    }
+  },
+  "paired": {
+    "KIVI-4_vs_FP16": {
+      "mean_task_delta": 0.025632,
+      "regressed_tasks": 47,
+      "improved_tasks": 78,
+      "unchanged_tasks": 825,
+      "new_parse_failures": 23,
+      "parse_recoveries": 60,
+      "required_path_regressions": 41,
+      "largest_regressions": [
+        {
+          "task_id": "170506",
+          "input_type": "XML",
+          "output_type": "JSON",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        },
+        {
+          "task_id": "170517",
+          "input_type": "XML",
+          "output_type": "JSON",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        },
+        {
+          "task_id": "170528",
+          "input_type": "XML",
+          "output_type": "JSON",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        },
+        {
+          "task_id": "170547",
+          "input_type": "XML",
+          "output_type": "JSON",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        },
+        {
+          "task_id": "180534",
+          "input_type": "YAML",
+          "output_type": "JSON",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        },
+        {
+          "task_id": "051826",
+          "input_type": "JSON",
+          "output_type": "YAML",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        },
+        {
+          "task_id": "100539",
+          "input_type": "TOML",
+          "output_type": "JSON",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        },
+        {
+          "task_id": "021802",
+          "input_type": "CSV",
+          "output_type": "YAML",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        },
+        {
+          "task_id": "021822",
+          "input_type": "CSV",
+          "output_type": "YAML",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        },
+        {
+          "task_id": "101818",
+          "input_type": "TOML",
+          "output_type": "YAML",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        },
+        {
+          "task_id": "101820",
+          "input_type": "TOML",
+          "output_type": "YAML",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        },
+        {
+          "task_id": "101827",
+          "input_type": "TOML",
+          "output_type": "YAML",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        },
+        {
+          "task_id": "101829",
+          "input_type": "TOML",
+          "output_type": "YAML",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        },
+        {
+          "task_id": "101837",
+          "input_type": "TOML",
+          "output_type": "YAML",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        },
+        {
+          "task_id": "101841",
+          "input_type": "TOML",
+          "output_type": "YAML",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        },
+        {
+          "task_id": "000244",
+          "input_type": "Text",
+          "output_type": "CSV",
+          "fp16_score": 1.0,
+          "candidate_score": 0.2,
+          "delta": -0.8
+        },
+        {
+          "task_id": "021823",
+          "input_type": "CSV",
+          "output_type": "YAML",
+          "fp16_score": 0.75,
+          "candidate_score": 0.0,
+          "delta": -0.75
+        },
+        {
+          "task_id": "001734",
+          "input_type": "Text",
+          "output_type": "XML",
+          "fp16_score": 0.65,
+          "candidate_score": 0.0,
+          "delta": -0.65
+        },
+        {
+          "task_id": "000503",
+          "input_type": "Text",
+          "output_type": "JSON",
+          "fp16_score": 0.79,
+          "candidate_score": 0.2,
+          "delta": -0.59
+        },
+        {
+          "task_id": "001727",
+          "input_type": "Text",
+          "output_type": "XML",
+          "fp16_score": 0.95,
+          "candidate_score": 0.36,
+          "delta": -0.59
+        }
+      ],
+      "new_parse_failure_examples": [
+        {
+          "task_id": "001734",
+          "input_type": "Text",
+          "output_type": "XML",
+          "fp16_score": 0.65,
+          "candidate_score": 0.0,
+          "delta": -0.65
+        },
+        {
+          "task_id": "020510",
+          "input_type": "CSV",
+          "output_type": "JSON",
+          "fp16_score": 0.2,
+          "candidate_score": 0.0,
+          "delta": -0.2
+        },
+        {
+          "task_id": "020516",
+          "input_type": "CSV",
+          "output_type": "JSON",
+          "fp16_score": 0.2,
+          "candidate_score": 0.0,
+          "delta": -0.2
+        },
+        {
+          "task_id": "020541",
+          "input_type": "CSV",
+          "output_type": "JSON",
+          "fp16_score": 0.2,
+          "candidate_score": 0.0,
+          "delta": -0.2
+        },
+        {
+          "task_id": "170506",
+          "input_type": "XML",
+          "output_type": "JSON",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        },
+        {
+          "task_id": "170517",
+          "input_type": "XML",
+          "output_type": "JSON",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        },
+        {
+          "task_id": "170528",
+          "input_type": "XML",
+          "output_type": "JSON",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        },
+        {
+          "task_id": "170547",
+          "input_type": "XML",
+          "output_type": "JSON",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        },
+        {
+          "task_id": "180534",
+          "input_type": "YAML",
+          "output_type": "JSON",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        },
+        {
+          "task_id": "051826",
+          "input_type": "JSON",
+          "output_type": "YAML",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        },
+        {
+          "task_id": "100539",
+          "input_type": "TOML",
+          "output_type": "JSON",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        },
+        {
+          "task_id": "100540",
+          "input_type": "TOML",
+          "output_type": "JSON",
+          "fp16_score": 0.2,
+          "candidate_score": 0.0,
+          "delta": -0.2
+        },
+        {
+          "task_id": "021802",
+          "input_type": "CSV",
+          "output_type": "YAML",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        },
+        {
+          "task_id": "021805",
+          "input_type": "CSV",
+          "output_type": "YAML",
+          "fp16_score": 0.2,
+          "candidate_score": 0.0,
+          "delta": -0.2
+        },
+        {
+          "task_id": "021822",
+          "input_type": "CSV",
+          "output_type": "YAML",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        },
+        {
+          "task_id": "021823",
+          "input_type": "CSV",
+          "output_type": "YAML",
+          "fp16_score": 0.75,
+          "candidate_score": 0.0,
+          "delta": -0.75
+        },
+        {
+          "task_id": "021840",
+          "input_type": "CSV",
+          "output_type": "YAML",
+          "fp16_score": 0.2,
+          "candidate_score": 0.0,
+          "delta": -0.2
+        },
+        {
+          "task_id": "101818",
+          "input_type": "TOML",
+          "output_type": "YAML",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        },
+        {
+          "task_id": "101820",
+          "input_type": "TOML",
+          "output_type": "YAML",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        },
+        {
+          "task_id": "101827",
+          "input_type": "TOML",
+          "output_type": "YAML",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        }
+      ]
+    },
+    "KIVI-2_vs_FP16": {
+      "mean_task_delta": -0.044653,
+      "regressed_tasks": 215,
+      "improved_tasks": 162,
+      "unchanged_tasks": 573,
+      "new_parse_failures": 125,
+      "parse_recoveries": 118,
+      "required_path_regressions": 195,
+      "largest_regressions": [
+        {
+          "task_id": "000541",
+          "input_type": "Text",
+          "output_type": "JSON",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        },
+        {
+          "task_id": "000544",
+          "input_type": "Text",
+          "output_type": "JSON",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        },
+        {
+          "task_id": "001007",
+          "input_type": "Text",
+          "output_type": "TOML",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        },
+        {
+          "task_id": "001035",
+          "input_type": "Text",
+          "output_type": "TOML",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        },
+        {
+          "task_id": "001801",
+          "input_type": "Text",
+          "output_type": "YAML",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        },
+        {
+          "task_id": "001803",
+          "input_type": "Text",
+          "output_type": "YAML",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        },
+        {
+          "task_id": "001811",
+          "input_type": "Text",
+          "output_type": "YAML",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        },
+        {
+          "task_id": "001815",
+          "input_type": "Text",
+          "output_type": "YAML",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        },
+        {
+          "task_id": "001821",
+          "input_type": "Text",
+          "output_type": "YAML",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        },
+        {
+          "task_id": "001833",
+          "input_type": "Text",
+          "output_type": "YAML",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        },
+        {
+          "task_id": "001836",
+          "input_type": "Text",
+          "output_type": "YAML",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        },
+        {
+          "task_id": "001837",
+          "input_type": "Text",
+          "output_type": "YAML",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        },
+        {
+          "task_id": "001842",
+          "input_type": "Text",
+          "output_type": "YAML",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        },
+        {
+          "task_id": "170517",
+          "input_type": "XML",
+          "output_type": "JSON",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        },
+        {
+          "task_id": "170530",
+          "input_type": "XML",
+          "output_type": "JSON",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        },
+        {
+          "task_id": "170531",
+          "input_type": "XML",
+          "output_type": "JSON",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        },
+        {
+          "task_id": "170532",
+          "input_type": "XML",
+          "output_type": "JSON",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        },
+        {
+          "task_id": "170535",
+          "input_type": "XML",
+          "output_type": "JSON",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        },
+        {
+          "task_id": "170536",
+          "input_type": "XML",
+          "output_type": "JSON",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        },
+        {
+          "task_id": "170544",
+          "input_type": "XML",
+          "output_type": "JSON",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        }
+      ],
+      "new_parse_failure_examples": [
+        {
+          "task_id": "000541",
+          "input_type": "Text",
+          "output_type": "JSON",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        },
+        {
+          "task_id": "000542",
+          "input_type": "Text",
+          "output_type": "JSON",
+          "fp16_score": 0.2,
+          "candidate_score": 0.0,
+          "delta": -0.2
+        },
+        {
+          "task_id": "000544",
+          "input_type": "Text",
+          "output_type": "JSON",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        },
+        {
+          "task_id": "001007",
+          "input_type": "Text",
+          "output_type": "TOML",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        },
+        {
+          "task_id": "001009",
+          "input_type": "Text",
+          "output_type": "TOML",
+          "fp16_score": 0.47,
+          "candidate_score": 0.0,
+          "delta": -0.47
+        },
+        {
+          "task_id": "001010",
+          "input_type": "Text",
+          "output_type": "TOML",
+          "fp16_score": 0.5,
+          "candidate_score": 0.0,
+          "delta": -0.5
+        },
+        {
+          "task_id": "001035",
+          "input_type": "Text",
+          "output_type": "TOML",
+          "fp16_score": 1.0,
+          "candidate_score": 0.0,
+          "delta": -1.0
+        },
+        {
+          "task_id": "001700",
+          "input_type": "Text",
+          "output_type": "XML",
+          "fp16_score": 0.63,
+          "candidate_score": 0.0,
+          "delta": -0.63
+        },
+        {
+          "task_id": "001709",
+          "input_type": "Text",
+          "output_type": "XML",
+          "fp16_score": 0.57,
+          "candidate_score": 0.0,
+          "delta": -0.57
+        },
+        {
+          "task_id": "001713",
+          "input_type": "Text",
+          "output_type": "XML",
+          "fp16_score": 0.96,
+          "candidate_score": 0.0,
+          "delta": -0.96
+        },
+        {
+          "task_id": "001714",
+          "input_type": "Text",
+          "output_type": "XML",
+          "fp16_score": 0.63,
+          "candidate_score": 0.0,
+          "delta": -0.63
+        },
+        {
+          "task_id": "001719",
+          "input_type": "Text",
+          "output_type": "XML",
+          "fp16_score": 0.68,
+          "candidate_score": 0.0,
+          "delta": -0.68
+        },
+        {
+          "task_id": "001722",
+          "input_type": "Text",
+          "output_type": "XML",
+          "fp16_score": 0.89,
+          "candidate_score": 0.0,
+          "delta": -0.89
+        },
+        {
+          "task_id": "001725",
+          "input_type": "Text",
+          "output_type": "XML",
+          "fp16_score": 0.35,
+          "candidate_score": 0.0,
+          "delta": -0.35
+        },
+        {
+          "task_id": "001727",
+          "input_type": "Text",
+          "output_type": "XML",
+          "fp16_score": 0.95,
+          "candidate_score": 0.0,
+          "delta": -0.95
+        },
+        {
+          "task_id": "001730",
+          "input_type": "Text",
+          "output_type": "XML",
+          "fp16_score": 0.67,
+          "candidate_score": 0.0,
+          "delta": -0.67
+        },
+        {
+          "task_id": "001734",
+          "input_type": "Text",
+          "output_type": "XML",
+          "fp16_score": 0.65,
+          "candidate_score": 0.0,
+          "delta": -0.65
+        },
+        {
+          "task_id": "001741",
+          "input_type": "Text",
+          "output_type": "XML",
+          "fp16_score": 0.41,
+          "candidate_score": 0.0,
+          "delta": -0.41
+        },
+        {
+          "task_id": "001744",
+          "input_type": "Text",
+          "output_type": "XML",
+          "fp16_score": 0.25,
+          "candidate_score": 0.0,
+          "delta": -0.25
+        },
+        {
+          "task_id": "001748",
+          "input_type": "Text",
+          "output_type": "XML",
+          "fp16_score": 0.68,
+          "candidate_score": 0.0,
+          "delta": -0.68
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,11 @@
+torch
+datasets>=2.19.0
+huggingface_hub>=0.24.0
+pyarrow
+transformers
+accelerate
+safetensors
+sentencepiece
+protobuf
+tqdm
+pytest>=8.0

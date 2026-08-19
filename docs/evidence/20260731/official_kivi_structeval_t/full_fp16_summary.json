@@ -1,0 +1,70 @@
+{
+  "scope": "StructEval-T",
+  "complete_scope": true,
+  "dataset_rows": 950,
+  "expected_rows": 950,
+  "unscored_task_ids": [],
+  "rendered_task_ids": [],
+  "categories": {
+    "T-generation": {
+      "count": 250,
+      "mean_score": 0.65528,
+      "parse_success_count": 195,
+      "parse_success_rate": 0.78,
+      "mean_required_path_score": 0.624231,
+      "perfect_score_count": 106
+    },
+    "T-conversion": {
+      "count": 700,
+      "mean_score": 0.348486,
+      "parse_success_count": 332,
+      "parse_success_rate": 0.474286,
+      "mean_required_path_score": 0.316616,
+      "perfect_score_count": 123
+    }
+  },
+  "t_track_unweighted_mean": 0.501883,
+  "task_weighted_mean": 0.429221,
+  "by_output_type": {
+    "CSV": {
+      "count": 200,
+      "mean_score": 0.72975,
+      "parse_success_count": 200,
+      "parse_success_rate": 1.0,
+      "mean_required_path_score": 0.660703,
+      "perfect_score_count": 40
+    },
+    "JSON": {
+      "count": 250,
+      "mean_score": 0.43832,
+      "parse_success_count": 129,
+      "parse_success_rate": 0.516,
+      "mean_required_path_score": 0.41892,
+      "perfect_score_count": 93
+    },
+    "TOML": {
+      "count": 50,
+      "mean_score": 0.0594,
+      "parse_success_count": 4,
+      "parse_success_rate": 0.08,
+      "mean_required_path_score": 0.054167,
+      "perfect_score_count": 2
+    },
+    "XML": {
+      "count": 200,
+      "mean_score": 0.1706,
+      "parse_success_count": 52,
+      "parse_success_rate": 0.26,
+      "mean_required_path_score": 0.148269,
+      "perfect_score_count": 5
+    },
+    "YAML": {
+      "count": 250,
+      "mean_score": 0.46056,
+      "parse_success_count": 142,
+      "parse_success_rate": 0.568,
+      "mean_required_path_score": 0.433824,
+      "perfect_score_count": 89
+    }
+  }
+}

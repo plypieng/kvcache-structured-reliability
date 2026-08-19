@@ -1,0 +1,67 @@
+# This repository intentionally tracks only the research code and frozen evidence.
+# The workspace also contains local models, datasets, notebooks, generated slides,
+# and server logs that must not be pushed.
+/*
+!/.gitignore
+!/README.md
+!/pytest.ini
+!/docs/
+!/artifacts/
+!/manuscripts/
+!/tests/
+!/toy_kv_experiments/
+
+# Research package: include source, documentation, and reproducibility scripts.
+/toy_kv_experiments/*
+!/toy_kv_experiments/*.py
+!/toy_kv_experiments/*.md
+!/toy_kv_experiments/requirements.txt
+!/toy_kv_experiments/server/
+!/toy_kv_experiments/data/
+
+/toy_kv_experiments/server/*
+!/toy_kv_experiments/server/*.py
+!/toy_kv_experiments/server/*.sh
+!/toy_kv_experiments/server/*.md
+!/toy_kv_experiments/server/*.txt
+
+# Keep only dataset documentation and frozen task manifests, not downloaded data.
+/toy_kv_experiments/data/*
+!/toy_kv_experiments/data/public/
+!/toy_kv_experiments/data/structeval_full/
+/toy_kv_experiments/data/public/*
+!/toy_kv_experiments/data/public/README.md
+/toy_kv_experiments/data/structeval_full/*
+!/toy_kv_experiments/data/structeval_full/README.md
+!/toy_kv_experiments/data/structeval_full/examples_by_output_type.md
+!/toy_kv_experiments/data/structeval_full/manifests/
+/toy_kv_experiments/data/structeval_full/manifests/*
+!/toy_kv_experiments/data/structeval_full/manifests/*.json
+
+# Manuscript source is useful; generated TeX products are not.
+/manuscripts/*
+!/manuscripts/ieice_shinetsu_2026/
+/manuscripts/ieice_shinetsu_2026/*
+!/manuscripts/ieice_shinetsu_2026/README.md
+!/manuscripts/ieice_shinetsu_2026/*.tex
+!/manuscripts/ieice_shinetsu_2026/*.cls
+!/manuscripts/ieice_shinetsu_2026/*.sty
+
+# Standard local and generated files.
+**/.DS_Store
+**/__pycache__/
+**/*.py[cod]
+**/.pytest_cache/
+**/.venv/
+**/venv/
+**/.env
+**/.env.*
+**/*.log
+**/*.pid
+**/*.aux
+**/*.dvi
+**/*.fdb_latexmk
+**/*.fls
+**/*.synctex.gz
+**/*.pdf
+

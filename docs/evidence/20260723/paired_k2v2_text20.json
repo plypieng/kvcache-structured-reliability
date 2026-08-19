@@ -1,0 +1,79 @@
+{
+  "n": 20,
+  "mean_fp16": 0.7530000000000001,
+  "mean_candidate": 0.7175,
+  "unchanged": 13,
+  "better": 3,
+  "worse": 4,
+  "parse_failures_induced": 1,
+  "better_tasks": [
+    {
+      "task_id": "001017",
+      "task_type": "Text->TOML",
+      "baseline": 0.0,
+      "candidate": 0.95,
+      "delta": 0.95,
+      "baseline_parse": 0.0,
+      "candidate_parse": 1
+    },
+    {
+      "task_id": "000504",
+      "task_type": "Text->JSON",
+      "baseline": 0.72,
+      "candidate": 1.0,
+      "delta": 0.28,
+      "baseline_parse": 1,
+      "candidate_parse": 1
+    },
+    {
+      "task_id": "001022",
+      "task_type": "Text->TOML",
+      "baseline": 0.0,
+      "candidate": 0.65,
+      "delta": 0.65,
+      "baseline_parse": 0.0,
+      "candidate_parse": 1
+    }
+  ],
+  "worse_tasks": [
+    {
+      "task_id": "001830",
+      "task_type": "Text->YAML",
+      "baseline": 1.0,
+      "candidate": 0.86,
+      "delta": -0.14,
+      "baseline_parse": 1,
+      "candidate_parse": 1
+    },
+    {
+      "task_id": "001818",
+      "task_type": "Text->YAML",
+      "baseline": 1.0,
+      "candidate": 0.0,
+      "delta": -1,
+      "baseline_parse": 1,
+      "candidate_parse": 0.0
+    },
+    {
+      "task_id": "000219",
+      "task_type": "Text->CSV",
+      "baseline": 1.0,
+      "candidate": 0.2,
+      "delta": -0.8,
+      "baseline_parse": 1,
+      "candidate_parse": 1
+    },
+    {
+      "task_id": "051714",
+      "task_type": "JSON->XML",
+      "baseline": 0.85,
+      "candidate": 0.2,
+      "delta": -0.6499999999999999,
+      "baseline_parse": 1,
+      "candidate_parse": 1
+    }
+  ],
+  "mean_candidate_storage_bytes": 11871731.2,
+  "mean_fp16_storage_bytes": 41190195.2,
+  "size_vs_fp16": 0.2882174056800779
+}

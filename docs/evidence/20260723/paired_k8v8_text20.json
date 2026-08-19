@@ -1,0 +1,24 @@
+{
+  "n": 20,
+  "mean_fp16": 0.7530000000000001,
+  "mean_candidate": 0.7929999999999999,
+  "unchanged": 19,
+  "better": 1,
+  "worse": 0,
+  "parse_failures_induced": 0,
+  "better_tasks": [
+    {
+      "task_id": "170536",
+      "task_type": "XML->JSON",
+      "baseline": 0.2,
+      "candidate": 1.0,
+      "delta": 0.8,
+      "baseline_parse": 1,
+      "candidate_parse": 1
+    }
+  ],
+  "worse_tasks": [],
+  "mean_candidate_storage_bytes": 25580710.4,
+  "mean_fp16_storage_bytes": 41190195.2,
+  "size_vs_fp16": 0.6210388243073923
+}
