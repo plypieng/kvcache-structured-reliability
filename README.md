@@ -30,6 +30,10 @@ python3 -m toy_kv_experiments.analyze_official_structeval_pairs \
   --kivi4 artifacts/structeval_t_20260731/kivi4/evaluation.json \
   --kivi2 artifacts/structeval_t_20260731/kivi2/evaluation.json \
   --output-dir artifacts/structeval_t_20260731/analysis
+python3 -m toy_kv_experiments.analyze_shared_prefix_trace \
+  --fp16 artifacts/structeval_t_20260731/shared_prefix/fp16_trace.json \
+  --candidate artifacts/structeval_t_20260731/shared_prefix/kivi4_trace.json \
+  --output-dir artifacts/structeval_t_20260731/shared_prefix/analysis
 ```
 
 See [the experiment freeze](docs/reproducibility/EXPERIMENT_FREEZE_20260731.md)
@@ -42,3 +46,7 @@ Downloaded datasets, model weights, raw checkpoints, notebooks, generated
 slides, and server logs are deliberately excluded. Frozen official evaluator
 outputs and their SHA-256 checksums are included because they are the evidence
 used by the paired analysis.
+
+The shared-prefix trace is a mechanism diagnostic on the 23 KIVI-4-induced
+parse regressions. It is selection-biased by design and is not an estimate for
+all StructEval-T tasks.

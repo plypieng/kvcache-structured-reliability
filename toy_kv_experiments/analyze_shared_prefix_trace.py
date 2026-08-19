@@ -124,6 +124,16 @@ def analyze(
     positions = sum(row["positions"] for row in task_rows)
     structural_positions = sum(row["structural_positions"] for row in task_rows)
     other_positions = sum(row["other_positions"] for row in task_rows)
+    fp16_positions = [
+        position
+        for task in fp16["task_traces"]
+        for position in task["positions"]
+    ]
+    candidate_positions = [
+        position
+        for task in candidate["task_traces"]
+        for position in task["positions"]
+    ]
     report = {
         "method": candidate["method"],
         "causal_boundary": candidate["causal_boundary"],
@@ -135,6 +145,28 @@ def analyze(
         ),
         "top1_disagreements": len(disagreement_rows),
         "top1_disagreement_rate": len(disagreement_rows) / positions if positions else 0.0,
+        "fp16_frozen_target_top1_matches": sum(
+            row["top1_token_id"] == row["target_token_id"] for row in fp16_positions
+        ),
+        "fp16_frozen_target_top1_match_rate": (
+            sum(row["top1_token_id"] == row["target_token_id"] for row in fp16_positions)
+            / len(fp16_positions)
+            if fp16_positions
+            else 0.0
+        ),
+        "candidate_frozen_target_top1_matches": sum(
+            row["top1_token_id"] == row["target_token_id"]
+            for row in candidate_positions
+        ),
+        "candidate_frozen_target_top1_match_rate": (
+            sum(
+                row["top1_token_id"] == row["target_token_id"]
+                for row in candidate_positions
+            )
+            / len(candidate_positions)
+            if candidate_positions
+            else 0.0
+        ),
         "structural_positions": structural_positions,
         "structural_top1_disagreements": len(structural),
         "structural_top1_disagreement_rate": (
@@ -182,6 +214,8 @@ def write_markdown(path: Path, report: dict[str, Any]) -> None:
         f"| Selected parse-regression tasks | {report['tasks']} |",
         f"| Teacher-forced positions | {report['positions']} |",
         f"| Tasks with a top-1 disagreement | {report['tasks_with_top1_disagreement']} |",
+        f"| FP16 top-1 matches replay target | {report['fp16_frozen_target_top1_matches']} / {report['positions']} ({report['fp16_frozen_target_top1_match_rate']:.3%}) |",
+        f"| KIVI top-1 matches replay target | {report['candidate_frozen_target_top1_matches']} / {report['positions']} ({report['candidate_frozen_target_top1_match_rate']:.3%}) |",
         f"| All top-1 disagreements | {report['top1_disagreements']} ({report['top1_disagreement_rate']:.3%}) |",
         f"| Structural-marker disagreements | {report['structural_top1_disagreements']} / {report['structural_positions']} ({report['structural_top1_disagreement_rate']:.3%}) |",
         f"| Other-token disagreements | {report['other_top1_disagreements']} / {report['other_positions']} ({report['other_top1_disagreement_rate']:.3%}) |",
@@ -189,6 +223,9 @@ def write_markdown(path: Path, report: dict[str, Any]) -> None:
         "## Interpretation boundary",
         "",
         report["causal_boundary"],
+        "The evaluator artifact stores decoded output text rather than original token IDs.",
+        "The trace retokenizes that text; any FP16 replay mismatch is reported above",
+        "rather than silently treated as an effect of quantization.",
         "The selected tasks are KIVI-4-induced parse regressions, so these rates",
         "must not be generalized to all StructEval-T tasks.",
     ]

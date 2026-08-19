@@ -1,0 +1,26 @@
+{
+  "method": "shared-prefix teacher-forced next-token sensitivity",
+  "causal_boundary": "The trace isolates next-token changes under an identical prefix, but does not attribute a change to a specific cache position, layer, key, or value.",
+  "condition": "K4/V4",
+  "tasks": 23,
+  "positions": 7762,
+  "tasks_with_top1_disagreement": 23,
+  "top1_disagreements": 40,
+  "top1_disagreement_rate": 0.00515331100231899,
+  "fp16_frozen_target_top1_matches": 7758,
+  "fp16_frozen_target_top1_match_rate": 0.9994846688997681,
+  "candidate_frozen_target_top1_matches": 7720,
+  "candidate_frozen_target_top1_match_rate": 0.9945890234475651,
+  "structural_positions": 1854,
+  "structural_top1_disagreements": 12,
+  "structural_top1_disagreement_rate": 0.006472491909385114,
+  "other_positions": 5908,
+  "other_top1_disagreements": 28,
+  "other_top1_disagreement_rate": 0.004739336492890996,
+  "disagreements_by_target_kind": {
+    "structural_marker": 12,
+    "content": 11,
+    "whitespace": 9,
+    "empty": 8
+  }
+}
