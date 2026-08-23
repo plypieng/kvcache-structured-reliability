@@ -7,6 +7,8 @@ SOURCE_JSONL="${SOURCE_JSONL:-$PROJECT_DIR/toy_kv_experiments/data/structeval_fu
 MANIFEST="${MANIFEST:-$PROJECT_DIR/toy_kv_experiments/data/structeval_full/manifests/protection_pilot_failure_control_46.json}"
 OUT_DIR="${OUT_DIR:-$PROJECT_DIR/toy_kv_experiments/results/protection_pilot}"
 LOG_DIR="${LOG_DIR:-$PROJECT_DIR/toy_kv_experiments/logs/protection_pilot}"
+MODEL_ID="${MODEL_ID:-mistralai/Mistral-7B-Instruct-v0.2}"
+MODEL_DIR="${MODEL_DIR:-$HOME/official_baselines/model_cache/models--mistralai--Mistral-7B-Instruct-v0.2/snapshots/41b61a33a2483885c981aa79e0df6b32407ed873}"
 
 LIMIT="${LIMIT:-0}"
 MAX_NEW_TOKENS="${MAX_NEW_TOKENS:-1024}"
@@ -25,6 +27,8 @@ summary_log="$LOG_DIR/matched_budget_protection_pilot_${timestamp}.log"
 echo "[protection-pilot] matched-budget StructEval failure/control pilot" | tee "$summary_log"
 echo "[protection-pilot] source: $SOURCE_JSONL" | tee -a "$summary_log"
 echo "[protection-pilot] manifest: $MANIFEST" | tee -a "$summary_log"
+echo "[protection-pilot] model: $MODEL_ID" | tee -a "$summary_log"
+echo "[protection-pilot] model directory: $MODEL_DIR" | tee -a "$summary_log"
 echo "[protection-pilot] tasks: 46 (23 prior KIVI-4 failures + 23 matched controls)" | tee -a "$summary_log"
 echo "[protection-pilot] cache: real-blockwise K4/V4, residual=$RESIDUAL_LENGTH, group=$KV_GROUP_SIZE, block=$QUANTIZE_BLOCK_SIZE" | tee -a "$summary_log"
 echo "[protection-pilot] protected bits: $PROTECTED_BITS; storage ceiling: $TARGET_AVERAGE_BITS average bits" | tee -a "$summary_log"
@@ -46,6 +50,8 @@ run_case() {
   echo | tee -a "$summary_log"
   echo "[protection-pilot] $(date '+%Y-%m-%d %H:%M:%S') start: $label" | tee -a "$summary_log"
   LIMIT="$LIMIT" \
+  MODEL_ID="$MODEL_ID" \
+  MODEL_DIR="$MODEL_DIR" \
   STRUCTEVAL_JSONL="$SOURCE_JSONL" \
   STRUCTEVAL_MANIFEST="$MANIFEST" \
   OUTPUT_TYPE=ALL \
@@ -67,6 +73,7 @@ run_case() {
   PROTECTION_SIGNAL_SOURCE=prompt-visible \
   CACHE_QUANTIZATION_MODE=real-blockwise \
   OFFICIAL_STRUCTEVAL=1 \
+  OFFICIAL_MODEL_NAME="$MODEL_ID" \
   GENERATION_SEED="$GENERATION_SEED" \
   RESUME=1 \
   OUT_PATH="$out_path" \
