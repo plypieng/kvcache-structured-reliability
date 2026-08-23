@@ -6,6 +6,7 @@ KIVI_REPO="${KIVI_REPO:-$HOME/official_baselines/KIVI-paper}"
 MODEL_CACHE_DIR="${MODEL_CACHE_DIR:-$HOME/official_baselines/model_cache}"
 BASELINE_ROOT="${BASELINE_ROOT:-$HOME/official_baselines/results/kivi_structeval_t_20260729_170807}"
 SELECTION_CSV="${SELECTION_CSV:-$PROJECT_DIR/artifacts/structeval_t_20260731/analysis/parse_failure_annotations.csv}"
+SELECTION_LABEL="${SELECTION_LABEL:-KIVI-4}"
 RUN_ID="${RUN_ID:-$(date +%Y%m%d_%H%M%S)}"
 RUN_ROOT="${RUN_ROOT:-$HOME/official_baselines/results/shared_prefix_kivi4_failures_$RUN_ID}"
 MINIFORGE_DIR="${MINIFORGE_DIR:-$HOME/miniforge3}"
@@ -52,7 +53,7 @@ common_args=(
   --model-cache-dir "$MODEL_CACHE_DIR"
   --fp16-evaluation "$BASELINE_ROOT/full_fp16/eval/evaluation.json"
   --selection-csv "$SELECTION_CSV"
-  --selection-condition KIVI-4
+  --selection-condition "$SELECTION_LABEL"
   --seed 42
   --top-k 5
 )
