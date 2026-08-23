@@ -29,6 +29,10 @@ def main() -> None:
     parser.add_argument("--source", required=True, type=Path)
     parser.add_argument("--failure-trace", required=True, type=Path)
     parser.add_argument("--control-trace", required=True, type=Path)
+    parser.add_argument("--failure-task-ids", nargs="+", default=None)
+    parser.add_argument("--control-task-ids", nargs="+", default=None)
+    parser.add_argument("--failure-limit", type=int, default=None)
+    parser.add_argument("--control-limit", type=int, default=None)
     parser.add_argument("--out", required=True, type=Path)
     args = parser.parse_args()
 
@@ -41,6 +45,14 @@ def main() -> None:
     }
     failure_ids = load_trace_task_ids(args.failure_trace)
     control_ids = load_trace_task_ids(args.control_trace)
+    if args.failure_task_ids is not None:
+        failure_ids = [str(task_id) for task_id in args.failure_task_ids]
+    elif args.failure_limit is not None:
+        failure_ids = failure_ids[: args.failure_limit]
+    if args.control_task_ids is not None:
+        control_ids = [str(task_id) for task_id in args.control_task_ids]
+    elif args.control_limit is not None:
+        control_ids = control_ids[: args.control_limit]
     if len(set(failure_ids)) != len(failure_ids) or len(set(control_ids)) != len(control_ids):
         raise ValueError("trace task IDs must be unique")
     overlap = set(failure_ids) & set(control_ids)

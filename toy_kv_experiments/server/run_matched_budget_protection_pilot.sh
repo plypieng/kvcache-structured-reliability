@@ -4,14 +4,14 @@ set -euo pipefail
 PROJECT_DIR="${PROJECT_DIR:-$HOME/kvcache}"
 RUNNER="$PROJECT_DIR/toy_kv_experiments/server/run_qwen_structeval_a6000.sh"
 SOURCE_JSONL="${SOURCE_JSONL:-$PROJECT_DIR/toy_kv_experiments/data/structeval_full/structeval_test.jsonl}"
-MANIFEST="${MANIFEST:-$PROJECT_DIR/toy_kv_experiments/data/structeval_full/manifests/protection_pilot_failure_control_46.json}"
+MANIFEST="${MANIFEST:-$PROJECT_DIR/toy_kv_experiments/data/structeval_full/manifests/protection_pilot_failure_control_8.json}"
 OUT_DIR="${OUT_DIR:-$PROJECT_DIR/toy_kv_experiments/results/protection_pilot}"
 LOG_DIR="${LOG_DIR:-$PROJECT_DIR/toy_kv_experiments/logs/protection_pilot}"
 MODEL_ID="${MODEL_ID:-mistralai/Mistral-7B-Instruct-v0.2}"
 MODEL_DIR="${MODEL_DIR:-$HOME/official_baselines/model_cache/models--mistralai--Mistral-7B-Instruct-v0.2/snapshots/41b61a33a2483885c981aa79e0df6b32407ed873}"
 
 LIMIT="${LIMIT:-0}"
-MAX_NEW_TOKENS="${MAX_NEW_TOKENS:-1024}"
+MAX_NEW_TOKENS="${MAX_NEW_TOKENS:-512}"
 RESIDUAL_LENGTH="${RESIDUAL_LENGTH:-128}"
 QUANTIZE_BLOCK_SIZE="${QUANTIZE_BLOCK_SIZE:-128}"
 KV_GROUP_SIZE="${KV_GROUP_SIZE:-32}"
@@ -29,7 +29,7 @@ echo "[protection-pilot] source: $SOURCE_JSONL" | tee -a "$summary_log"
 echo "[protection-pilot] manifest: $MANIFEST" | tee -a "$summary_log"
 echo "[protection-pilot] model: $MODEL_ID" | tee -a "$summary_log"
 echo "[protection-pilot] model directory: $MODEL_DIR" | tee -a "$summary_log"
-echo "[protection-pilot] tasks: 46 (23 prior KIVI-4 failures + 23 matched controls)" | tee -a "$summary_log"
+echo "[protection-pilot] tasks: 8 (4 prior KIVI-4 failures + 4 matched controls)" | tee -a "$summary_log"
 echo "[protection-pilot] cache: real-blockwise K4/V4, residual=$RESIDUAL_LENGTH, group=$KV_GROUP_SIZE, block=$QUANTIZE_BLOCK_SIZE" | tee -a "$summary_log"
 echo "[protection-pilot] protected bits: $PROTECTED_BITS; storage ceiling: $TARGET_AVERAGE_BITS average bits" | tee -a "$summary_log"
 echo "[protection-pilot] generation seed: $GENERATION_SEED; random protection seed: $PROTECTION_RANDOM_SEED" | tee -a "$summary_log"
@@ -81,7 +81,7 @@ run_case() {
   echo "[protection-pilot] $(date '+%Y-%m-%d %H:%M:%S') complete: $condition" | tee -a "$summary_log"
 }
 
-# Every condition uses the same task manifest, model, prompt wrapper, greedy
+# Every condition uses the same 8-task manifest, model, prompt wrapper, greedy
 # decoding, residual window, and packed-cache storage ceiling.
 run_case "uniform KIVI-4 baseline" "uniform_kivi4" "none" "prefix" "" "$TARGET_AVERAGE_BITS" "$PROTECTION_RANDOM_SEED"
 run_case "random protection" "random_protection" "all" "random" "$PROTECTED_BITS" "$TARGET_AVERAGE_BITS" "$PROTECTION_RANDOM_SEED"

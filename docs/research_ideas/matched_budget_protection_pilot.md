@@ -8,13 +8,16 @@ It is a development pilot, not yet a claim of a new compression method.
 
 ## Frozen tasks
 
-- 23 StructEval-T tasks where KIVI-4 previously changed an FP16 parseable
+- 4 StructEval-T tasks where KIVI-4 previously changed an FP16 parseable
   output into a parse failure.
-- 23 matched non-regression controls selected with the same input/output
+- 4 matched non-regression controls selected with the same input/output
   format and similar FP16 output length.
-- The same 46-task manifest is used for every condition.
+- The same 8-task manifest is used for every condition.
 
 The manifest is
+`toy_kv_experiments/data/structeval_full/manifests/protection_pilot_failure_control_8.json`.
+
+The larger 46-task manifest remains available for a later overnight run at
 `toy_kv_experiments/data/structeval_full/manifests/protection_pilot_failure_control_46.json`.
 
 ## Conditions
@@ -37,6 +40,9 @@ less storage than the ceiling.
 The comparison is fair as an equal storage ceiling, not as an exact equality
 of used bytes on every task. Result rows record the actual packed-cache bytes,
 the ceiling bytes, protected positions, and StructEval scores.
+
+This pilot uses a fixed generation cap of 512 tokens to keep iteration time
+manageable. It is a development result, not a StructEval leaderboard score.
 
 ## Interpretation rule
 

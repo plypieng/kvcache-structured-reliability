@@ -1,0 +1,117 @@
+{
+  "manifest_version": 1,
+  "manifest_type": "matched-budget-protection-pilot",
+  "source_file": "structeval_test.jsonl",
+  "source_sha256": "d4d838145fbe285d0c446b449470512c0c4d3922422894c77aa6183913751bda",
+  "sampling": "shared-prefix-failure-control",
+  "seed": 42,
+  "task_count": 8,
+  "failure_task_count": 4,
+  "control_task_count": 4,
+  "conditions": [
+    "uniform_kivi4",
+    "random_protection",
+    "recency_protection",
+    "structure_aware_protection"
+  ],
+  "budget_policy": {
+    "cache_quantization_mode": "real-blockwise",
+    "base_key_bits": 4,
+    "base_value_bits": 4,
+    "protected_bits": 8,
+    "residual_length": 128,
+    "group_size": 32,
+    "target_average_bits_ceiling": 10.5,
+    "protection_target": "both"
+  },
+  "tasks": [
+    {
+      "selection_index": 0,
+      "task_id": "001734",
+      "task_name": "Text to XML",
+      "input_type": "Text",
+      "output_type": "XML",
+      "stratum": "Text->XML",
+      "leaderboard_category": "T-generation",
+      "pilot_role": "kivi4_failure",
+      "source_trace_index": 0
+    },
+    {
+      "selection_index": 1,
+      "task_id": "020510",
+      "task_name": "CSV to JSON",
+      "input_type": "CSV",
+      "output_type": "JSON",
+      "stratum": "CSV->JSON",
+      "leaderboard_category": "T-conversion",
+      "pilot_role": "kivi4_failure",
+      "source_trace_index": 1
+    },
+    {
+      "selection_index": 2,
+      "task_id": "021802",
+      "task_name": "CSV to YAML",
+      "input_type": "CSV",
+      "output_type": "YAML",
+      "stratum": "CSV->YAML",
+      "leaderboard_category": "T-conversion",
+      "pilot_role": "kivi4_failure",
+      "source_trace_index": 2
+    },
+    {
+      "selection_index": 3,
+      "task_id": "051826",
+      "task_name": "JSON to YAML",
+      "input_type": "JSON",
+      "output_type": "YAML",
+      "stratum": "JSON->YAML",
+      "leaderboard_category": "T-conversion",
+      "pilot_role": "kivi4_failure",
+      "source_trace_index": 3
+    },
+    {
+      "selection_index": 4,
+      "task_id": "001733",
+      "task_name": "Text to XML",
+      "input_type": "Text",
+      "output_type": "XML",
+      "stratum": "Text->XML",
+      "leaderboard_category": "T-generation",
+      "pilot_role": "matched_control",
+      "source_trace_index": 0
+    },
+    {
+      "selection_index": 5,
+      "task_id": "020532",
+      "task_name": "CSV to JSON",
+      "input_type": "CSV",
+      "output_type": "JSON",
+      "stratum": "CSV->JSON",
+      "leaderboard_category": "T-conversion",
+      "pilot_role": "matched_control",
+      "source_trace_index": 1
+    },
+    {
+      "selection_index": 6,
+      "task_id": "021800",
+      "task_name": "CSV to YAML",
+      "input_type": "CSV",
+      "output_type": "YAML",
+      "stratum": "CSV->YAML",
+      "leaderboard_category": "T-conversion",
+      "pilot_role": "matched_control",
+      "source_trace_index": 2
+    },
+    {
+      "selection_index": 7,
+      "task_id": "051848",
+      "task_name": "JSON to YAML",
+      "input_type": "JSON",
+      "output_type": "YAML",
+      "stratum": "JSON->YAML",
+      "leaderboard_category": "T-conversion",
+      "pilot_role": "matched_control",
+      "source_trace_index": 3
+    }
+  ]
+}
