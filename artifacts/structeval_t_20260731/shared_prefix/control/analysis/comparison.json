@@ -1,0 +1,27 @@
+{
+  "failure_tasks": 23,
+  "control_tasks": 23,
+  "failure_positions": 7762,
+  "control_positions": 7706,
+  "failure": {
+    "structural_top1_disagreement_rate": 0.006472491909385114,
+    "other_top1_disagreement_rate": 0.004739336492890996,
+    "top1_disagreement_rate": 0.00515331100231899
+  },
+  "control": {
+    "structural_top1_disagreement_rate": 0.0016741071428571428,
+    "other_top1_disagreement_rate": 0.002705444707473791,
+    "top1_disagreement_rate": 0.0024656112120425644
+  },
+  "failure_minus_control": {
+    "structural_top1_disagreement_rate": 0.004798384766527971,
+    "other_top1_disagreement_rate": 0.0020338917854172047,
+    "top1_disagreement_rate": 0.002687699790276426
+  },
+  "failure_over_control": {
+    "structural_top1_disagreement_rate": 3.8662351672060415,
+    "other_top1_disagreement_rate": 1.7517772511848344,
+    "top1_disagreement_rate": 2.090074451782639
+  },
+  "interpretation_boundary": "The control set is matched by input/output format and FP16 generated length, but it is not a randomized or semantic match. The comparison is descriptive and does not establish that structural positions cause parse failures."
+}

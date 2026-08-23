@@ -1,0 +1,24 @@
+condition,task_id,task_name,input_type,output_type,control_role,matched_failure_task_id,failure_fp16_generated_tokens,control_fp16_generated_tokens,length_delta,failure_parse_transition,control_parse_transition
+KIVI-4,001733,Text to XML,Text,XML,matched_non_regression_control,001734,368,374,6,fp16_only,both_pass
+KIVI-4,020532,CSV to JSON,CSV,JSON,matched_non_regression_control,020510,368,395,27,fp16_only,both_pass
+KIVI-4,020531,CSV to JSON,CSV,JSON,matched_non_regression_control,020516,636,627,-9,fp16_only,both_pass
+KIVI-4,020523,CSV to JSON,CSV,JSON,matched_non_regression_control,020541,588,577,-11,fp16_only,both_pass
+KIVI-4,021800,CSV to YAML,CSV,YAML,matched_non_regression_control,021802,255,250,-5,fp16_only,both_pass
+KIVI-4,021810,CSV to YAML,CSV,YAML,matched_non_regression_control,021805,260,249,-11,fp16_only,both_pass
+KIVI-4,021804,CSV to YAML,CSV,YAML,matched_non_regression_control,021822,196,198,2,fp16_only,both_pass
+KIVI-4,021819,CSV to YAML,CSV,YAML,matched_non_regression_control,021823,375,358,-17,fp16_only,both_pass
+KIVI-4,021817,CSV to YAML,CSV,YAML,matched_non_regression_control,021840,382,404,22,fp16_only,both_pass
+KIVI-4,051848,JSON to YAML,JSON,YAML,matched_non_regression_control,051826,257,254,-3,fp16_only,both_pass
+KIVI-4,100507,TOML to JSON,TOML,JSON,matched_non_regression_control,100539,561,631,70,fp16_only,both_pass
+KIVI-4,100505,TOML to JSON,TOML,JSON,matched_non_regression_control,100540,535,464,-71,fp16_only,both_pass
+KIVI-4,101815,TOML to YAML,TOML,YAML,matched_non_regression_control,101818,221,223,2,fp16_only,both_pass
+KIVI-4,101802,TOML to YAML,TOML,YAML,matched_non_regression_control,101820,231,214,-17,fp16_only,both_pass
+KIVI-4,101804,TOML to YAML,TOML,YAML,matched_non_regression_control,101827,233,213,-20,fp16_only,both_pass
+KIVI-4,101849,TOML to YAML,TOML,YAML,matched_non_regression_control,101829,359,339,-20,fp16_only,both_pass
+KIVI-4,101842,TOML to YAML,TOML,YAML,matched_non_regression_control,101837,267,273,6,fp16_only,both_pass
+KIVI-4,101833,TOML to YAML,TOML,YAML,matched_non_regression_control,101841,269,257,-12,fp16_only,both_pass
+KIVI-4,170509,XML to JSON,XML,JSON,matched_non_regression_control,170506,294,324,30,fp16_only,both_pass
+KIVI-4,170514,XML to JSON,XML,JSON,matched_non_regression_control,170517,260,242,-18,fp16_only,both_pass
+KIVI-4,170526,XML to JSON,XML,JSON,matched_non_regression_control,170528,179,193,14,fp16_only,both_pass
+KIVI-4,170532,XML to JSON,XML,JSON,matched_non_regression_control,170547,255,237,-18,fp16_only,both_pass
+KIVI-4,180543,YAML to JSON,YAML,JSON,matched_non_regression_control,180534,436,433,-3,fp16_only,both_pass

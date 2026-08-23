@@ -49,4 +49,5 @@ used by the paired analysis.
 
 The shared-prefix trace is a mechanism diagnostic on the 23 KIVI-4-induced
 parse regressions. It is selection-biased by design and is not an estimate for
-all StructEval-T tasks.
+all StructEval-T tasks. A matched non-regression control and its comparison are
+stored under `artifacts/structeval_t_20260731/shared_prefix/control/`.

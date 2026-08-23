@@ -41,3 +41,8 @@ traces with:
 ```bash
 shasum -a 256 -c artifacts/structeval_t_20260731/shared_prefix/SHA256SUMS
 ```
+
+The matched non-regression control is stored under `control/`. It uses the same
+23 format strata as the failure set and selects the nearest available
+FP16-length `both_pass` task without replacement. The comparison is in
+`control/analysis/COMPARISON.md`.
