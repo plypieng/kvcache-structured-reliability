@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>StructEval Protection Pilot</title>
+  <style>
+    :root {
+      --paper: #f6f1e8;
+      --ink: #142a35;
+      --muted: #65757b;
+      --line: #cbc3b5;
+      --blue: #236883;
+      --blue-soft: #dcecf0;
+      --green: #2d765a;
+      --green-soft: #dfede5;
+      --coral: #c95645;
+      --coral-soft: #f4dfd9;
+      --amber: #b27a25;
+      --amber-soft: #f2e6cd;
+      --white: #fffdf9;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: "Avenir Next", "Trebuchet MS", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; }
+    body { background: #10191e; color: var(--ink); font-family: var(--sans); }
+    button { font: inherit; }
+    .deck { width: 100vw; height: 100vh; position: relative; background: var(--paper); }
+    .slide {
+      position: absolute; inset: 0; display: grid; grid-template-rows: auto 1fr auto;
+      gap: 18px; padding: 4.2vh 6vw 3.2vh 6.4vw; visibility: hidden; opacity: 0;
+      transform: translateX(18px); transition: opacity .2s ease, transform .2s ease;
+      background:
+        linear-gradient(90deg, rgba(35,104,131,.045) 1px, transparent 1px),
+        linear-gradient(rgba(35,104,131,.045) 1px, transparent 1px),
+        radial-gradient(circle at 93% 5%, rgba(178,122,37,.13), transparent 26%), var(--paper);
+      background-size: 48px 48px, 48px 48px, auto, auto;
+    }
+    .slide::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 9px; background: var(--accent, var(--blue)); }
+    .slide.active { visibility: visible; opacity: 1; transform: none; }
+    .head { display: flex; align-items: start; justify-content: space-between; gap: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+    .eyebrow { margin: 0 0 7px; color: var(--accent, var(--blue)); font-size: clamp(12px, 1vw, 16px); font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
+    h1, h2 { margin: 0; font-family: var(--serif); line-height: 1.02; letter-spacing: -.025em; }
+    h1 { font-size: clamp(46px, 6vw, 92px); max-width: 1100px; }
+    h2 { font-size: clamp(36px, 4.5vw, 68px); }
+    h3 { margin: 0 0 6px; font-size: clamp(17px, 1.5vw, 25px); line-height: 1.1; }
+    p { margin: 0; line-height: 1.35; }
+    .tag { padding: 7px 13px; color: var(--accent, var(--blue)); border: 1px solid currentColor; border-radius: 999px; font-weight: 900; white-space: nowrap; }
+    .content { min-height: 0; display: grid; align-content: center; gap: 19px; }
+    .footer { display: flex; align-items: end; justify-content: space-between; gap: 20px; color: var(--muted); font-size: clamp(10px, .8vw, 14px); }
+    .source { max-width: 86%; }
+    .page { color: var(--accent, var(--blue)); font-weight: 900; }
+    .lead { max-width: 980px; color: var(--muted); font-size: clamp(20px, 1.8vw, 30px); font-weight: 700; }
+    .callout { padding: 18px 22px; border-left: 7px solid var(--green); background: var(--green-soft); font-family: var(--serif); font-size: clamp(25px, 2.4vw, 40px); font-weight: 700; }
+    .stats { display: flex; flex-wrap: wrap; gap: 12px; }
+    .stat { min-width: 165px; padding: 13px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--white); }
+    .stat strong { display: block; color: var(--green); font-family: var(--serif); font-size: clamp(30px, 3vw, 48px); line-height: 1; }
+    .stat span { color: var(--muted); font-size: 14px; font-weight: 900; }
+
+    .method-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .method { min-height: 260px; padding: 16px; border: 1px solid var(--line); border-top: 7px solid var(--blue); border-radius: 12px; background: var(--white); }
+    .method:nth-child(2) { border-top-color: var(--amber); }
+    .method:nth-child(3) { border-top-color: var(--coral); }
+    .method:nth-child(4) { border-top-color: var(--green); }
+    .method p { color: var(--muted); font-size: clamp(14px, 1.1vw, 18px); }
+    .token-row { display: grid; grid-template-columns: repeat(8, 1fr); gap: 4px; margin: 15px 0 11px; }
+    .token { padding: 8px 2px; border: 1px solid #aeb6b5; border-radius: 5px; background: #edf0ed; text-align: center; font-family: "SFMono-Regular", Consolas, monospace; font-size: clamp(10px, .75vw, 13px); }
+    .token.hot { color: #fff; background: var(--coral); border-color: var(--coral); }
+    .token.mid { color: var(--ink); background: var(--amber-soft); border-color: var(--amber); }
+    .token.green { color: #fff; background: var(--green); border-color: var(--green); }
+    .legend { display: flex; flex-wrap: wrap; gap: 9px 14px; color: var(--muted); font-size: 12px; font-weight: 900; }
+    .key { display: inline-flex; align-items: center; gap: 5px; }
+    .swatch { width: 12px; height: 12px; border-radius: 3px; background: #edf0ed; border: 1px solid #aeb6b5; }
+    .swatch.hot { background: var(--coral); border-color: var(--coral); }
+    .swatch.mid { background: var(--amber-soft); border-color: var(--amber); }
+    .swatch.green { background: var(--green); border-color: var(--green); }
+
+    .protocol { width: min(980px, 100%); margin: 0 auto; display: grid; gap: 10px; }
+    .protocol-row { display: grid; grid-template-columns: 190px 1fr; gap: 18px; align-items: center; padding: 13px 17px; border: 1px solid var(--line); border-radius: 10px; background: var(--white); }
+    .protocol-row strong { color: var(--blue); }
+    .protocol-row span { color: var(--muted); }
+    .protocol-note { padding: 12px 16px; color: var(--muted); border-top: 1px solid var(--line); font-size: 14px; }
+
+    table { width: 100%; border-collapse: separate; border-spacing: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: var(--white); }
+    th, td { padding: 13px 16px; border-bottom: 1px solid var(--line); text-align: right; font-size: clamp(14px, 1.2vw, 20px); }
+    th { color: #fff; background: var(--ink); font-weight: 900; }
+    th:first-child, td:first-child { text-align: left; font-weight: 900; }
+    tr:last-child td { border-bottom: 0; }
+    .best td { color: var(--green); background: var(--green-soft); font-weight: 900; }
+    .caution { padding: 12px 16px; color: #6e4c12; border-left: 6px solid var(--amber); background: var(--amber-soft); font-size: clamp(14px, 1.1vw, 18px); }
+
+    .next-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 18px; align-items: stretch; }
+    .next-card { padding: 20px; border: 1px solid var(--line); border-radius: 13px; background: var(--white); }
+    .next-card h3 { color: var(--blue); }
+    .next-card ul { display: grid; gap: 9px; margin: 10px 0 0; padding-left: 20px; }
+    .next-card li { color: var(--muted); font-size: clamp(15px, 1.15vw, 19px); }
+    .running { display: grid; align-content: center; justify-items: center; padding: 25px; border: 3px solid var(--coral); border-radius: 15px; background: var(--coral-soft); text-align: center; }
+    .running strong { color: var(--coral); font-family: var(--serif); font-size: clamp(37px, 4vw, 65px); line-height: 1; }
+    .running span { margin-top: 10px; color: var(--muted); font-weight: 900; }
+    .controls { position: fixed; right: 20px; bottom: 18px; z-index: 20; display: flex; gap: 8px; }
+    .controls button { width: 40px; height: 36px; color: var(--ink); border: 1px solid var(--line); border-radius: 8px; background: rgba(255,253,249,.92); cursor: pointer; font-size: 24px; line-height: 1; }
+    .speaker-note { display: none; }
+    @media (max-width: 850px) {
+      .slide { padding: 25px 30px 24px 38px; }
+      .method-grid, .next-grid { grid-template-columns: 1fr 1fr; }
+      .method { min-height: 0; }
+      .protocol-row { grid-template-columns: 135px 1fr; }
+    }
+    @media (max-width: 580px) { .method-grid, .next-grid { grid-template-columns: 1fr; } .slide { overflow: auto; } }
+  </style>
+</head>
+<body>
+  <main class="deck" aria-label="StructEval protection pilot progress deck">
+    <section class="slide active" style="--accent:var(--green)">
+      <header class="head"><div><p class="eyebrow">Weekly progress</p><h1>Can extra KV-cache fidelity protect structure?</h1></div><span class="tag">pilot result</span></header>
+      <div class="content">
+        <p class="lead">A small matched test on structured-output tasks.</p>
+        <div class="callout">Protection improved the pilot score over uniform KIVI-4, but the comparison is not yet conclusive.</div>
+        <div class="stats"><div class="stat"><strong>32</strong><span>completed generations</span></div><div class="stat"><strong>8</strong><span>tasks × 4 policies</span></div><div class="stat"><strong>0.5025</strong><span>best pilot mean</span></div></div>
+      </div>
+      <footer class="footer"><span class="source">Mistral-7B-Instruct-v0.2 · real blockwise cache · official StructEval scorer</span><span class="page">1 / 5</span></footer>
+    </section>
+
+    <section class="slide" style="--accent:var(--blue)">
+      <header class="head"><div><p class="eyebrow">Method</p><h2>What does “protection” mean?</h2></div><span class="tag">same prompt, same model</span></header>
+      <div class="content">
+        <div class="method-grid">
+          <article class="method"><h3>Uniform KIVI-4</h3><div class="token-row"><i class="token">{</i><i class="token">name</i><i class="token">:</i><i class="token">Alice</i><i class="token">}</i><i class="token">...</i><i class="token">}</i><i class="token">EOS</i></div><p>Every old cache block stays at the base K4/V4 precision.</p></article>
+          <article class="method"><h3>Random</h3><div class="token-row"><i class="token mid">{</i><i class="token">name</i><i class="token hot">:</i><i class="token">Alice</i><i class="token mid">}</i><i class="token">...</i><i class="token hot">}</i><i class="token">EOS</i></div><p>Extra precision is assigned to randomly selected old positions.</p></article>
+          <article class="method"><h3>Recency</h3><div class="token-row"><i class="token">{</i><i class="token">name</i><i class="token">:</i><i class="token">Alice</i><i class="token hot">}</i><i class="token hot">...</i><i class="token hot">}</i><i class="token hot">EOS</i></div><p>Extra precision is assigned to the newest eligible positions.</p></article>
+          <article class="method"><h3>Structure-aware</h3><div class="token-row"><i class="token green">{</i><i class="token green">name</i><i class="token green">:</i><i class="token">Alice</i><i class="token green">}</i><i class="token">...</i><i class="token green">}</i><i class="token">EOS</i></div><p>Extra precision is assigned to syntax markers and prompt-visible required paths.</p></article>
+        </div>
+        <div class="legend"><span class="key"><i class="swatch"></i>base K4/V4</span><span class="key"><i class="swatch mid"></i>candidate</span><span class="key"><i class="swatch hot"></i>extra precision</span><span class="key"><i class="swatch green"></i>structure signal</span></div>
+      </div>
+      <footer class="footer"><span class="source">Higher precision means storing selected Key and Value cache positions with more bits.</span><span class="page">2 / 5</span></footer>
+    </section>
+
+    <section class="slide" style="--accent:var(--blue)">
+      <header class="head"><div><p class="eyebrow">Experimental setup</p><h2>Same eight tasks, four policies</h2></div><span class="tag">development pilot</span></header>
+      <div class="content">
+        <div class="protocol">
+          <div class="protocol-row"><strong>Tasks</strong><span>4 previous KIVI-4 failures + 4 matched non-regression controls</span></div>
+          <div class="protocol-row"><strong>Cache</strong><span>Real blockwise K4/V4 cache, residual length 128, group size 32</span></div>
+          <div class="protocol-row"><strong>Protection</strong><span>Protected positions use 8-bit storage under a 10.5-bit average ceiling</span></div>
+          <div class="protocol-row"><strong>Evaluation</strong><span>Greedy generation, 512-token cap, official parser and path scoring</span></div>
+          <div class="protocol-note">The four methods use the same model, prompts, task order, and generation seed.</div>
+        </div>
+      </div>
+      <footer class="footer"><span class="source">Mistral-7B-Instruct-v0.2 on NVIDIA A6000 · StructEval-T formats: XML, JSON, YAML</span><span class="page">3 / 5</span></footer>
+    </section>
+
+    <section class="slide" style="--accent:var(--green)">
+      <header class="head"><div><p class="eyebrow">Result</p><h2>Protection helped in this pilot</h2></div><span class="tag">official rescoring</span></header>
+      <div class="content">
+        <table aria-label="Pilot results"><thead><tr><th>Policy</th><th>Mean StructEval score</th><th>Effective bits/scalar</th></tr></thead><tbody>
+          <tr><td>Uniform KIVI-4</td><td>0.3337</td><td>6.51</td></tr>
+          <tr><td>Random protection</td><td>0.5025</td><td>9.74</td></tr>
+          <tr><td>Recency protection</td><td>0.4775</td><td>9.78</td></tr>
+          <tr class="best"><td>Structure-aware protection</td><td>0.5025</td><td>8.59</td></tr>
+        </tbody></table>
+        <div class="caution">Interpretation: structure-aware protection matched random protection here, while using fewer effective bits. The sample is too small to claim a general improvement.</div>
+      </div>
+      <footer class="footer"><span class="source">Official non-renderable score = 0.2 parse validity + 0.8 required-path coverage.</span><span class="page">4 / 5</span></footer>
+    </section>
+
+    <section class="slide" style="--accent:var(--coral)">
+      <header class="head"><div><p class="eyebrow">Next run</p><h2>Move from pilot to a larger matched test</h2></div><span class="tag">running on A6000</span></header>
+      <div class="content">
+        <div class="next-grid">
+          <article class="next-card"><h3>What changes</h3><ul><li>46 tasks: failures and matched controls across the same formats.</li><li>All four policies remain unchanged.</li><li>Checkpointing and official rescoring are enabled.</li><li>We compare at the same storage ceiling before interpreting the result.</li></ul></article>
+          <div class="running"><strong>46 × 4</strong><span>generation jobs queued<br>structure-aware result still provisional</span></div>
+        </div>
+        <div class="callout" style="border-color:var(--coral);background:var(--coral-soft)">Question for the next result: does structure-aware protection beat both random and recency at matched storage?</div>
+      </div>
+      <footer class="footer"><span class="source">The current pilot is development evidence, not a leaderboard result.</span><span class="page">5 / 5</span></footer>
+    </section>
+  </main>
+  <div class="controls"><button id="prev" aria-label="Previous slide">‹</button><button id="next" aria-label="Next slide">›</button></div>
+  <script>
+    const slides = [...document.querySelectorAll('.slide')];
+    let index = 0;
+    function show(next) {
+      index = Math.max(0, Math.min(slides.length - 1, next));
+      slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
+    }
+    document.getElementById('prev').onclick = () => show(index - 1);
+    document.getElementById('next').onclick = () => show(index + 1);
+    window.addEventListener('keydown', event => {
+      if (['ArrowRight', 'PageDown', ' '].includes(event.key)) { event.preventDefault(); show(index + 1); }
+      if (['ArrowLeft', 'PageUp'].includes(event.key)) { event.preventDefault(); show(index - 1); }
+      if (event.key === 'Home') show(0);
+      if (event.key === 'End') show(slides.length - 1);
+    });
+  </script>
+</body>
+</html>
