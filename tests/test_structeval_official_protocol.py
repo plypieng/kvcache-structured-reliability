@@ -768,6 +768,20 @@ def test_structure_token_mask_marks_json_syntax_tokens():
     assert mask.tolist() == [True, True, False, True, False]
 
 
+def test_structure_token_mask_all_marks_every_position():
+    class ToyTokenizer:
+        def decode(self, ids, skip_special_tokens=False):
+            return str(ids[0])
+
+    mask = kvq.structure_token_mask(
+        ToyTokenizer(),
+        kvq.torch.tensor([1, 2, 3]),
+        mode="all",
+    )
+
+    assert mask.tolist() == [True, True, True]
+
+
 def test_constraint_terms_from_structeval_paths_split_schema_keys():
     terms = kvq.constraint_terms_from_required_paths(
         [
@@ -916,6 +930,41 @@ def test_budgeted_protection_mask_can_prioritize_recent_older_positions():
     )
 
     assert selected.tolist() == [False, False, True, True, False]
+
+
+def test_budgeted_protection_mask_random_order_is_seeded():
+    candidate = kvq.torch.tensor([True, True, True, True, True, True])
+
+    first = kvq.budgeted_protection_mask(
+        candidate,
+        base_bits=4,
+        protected_bits=8,
+        residual_length=1,
+        target_average_bits=8.0,
+        order="random",
+        random_seed=17,
+    )
+    second = kvq.budgeted_protection_mask(
+        candidate,
+        base_bits=4,
+        protected_bits=8,
+        residual_length=1,
+        target_average_bits=8.0,
+        order="random",
+        random_seed=17,
+    )
+    different = kvq.budgeted_protection_mask(
+        candidate,
+        base_bits=4,
+        protected_bits=8,
+        residual_length=1,
+        target_average_bits=8.0,
+        order="random",
+        random_seed=18,
+    )
+
+    assert first.tolist() == second.tolist()
+    assert first.tolist() != different.tolist()
 
 
 def test_group_aware_budget_charges_key_protection_once_per_full_group():

@@ -24,6 +24,7 @@ ALLOW_ORACLE_PROTECTION="${ALLOW_ORACLE_PROTECTION:-0}"
 PROTECTED_BITS="${PROTECTED_BITS:-}"
 TARGET_AVERAGE_BITS="${TARGET_AVERAGE_BITS:-}"
 PROTECTION_BUDGET_ORDER="${PROTECTION_BUDGET_ORDER:-prefix}"
+PROTECTION_RANDOM_SEED="${PROTECTION_RANDOM_SEED:-0}"
 PROTECTION_TARGET="${PROTECTION_TARGET:-both}"
 CACHE_QUANTIZATION_MODE="${CACHE_QUANTIZATION_MODE:-repeated}"
 QUANTIZE_BLOCK_SIZE="${QUANTIZE_BLOCK_SIZE:-1}"
@@ -77,6 +78,7 @@ echo "[run] oracle evaluator-path override: $ALLOW_ORACLE_PROTECTION"
 echo "[run] protected bits: ${PROTECTED_BITS:-fp16 copy-back}"
 echo "[run] target average bits: ${TARGET_AVERAGE_BITS:-none}"
 echo "[run] protection budget order: $PROTECTION_BUDGET_ORDER"
+echo "[run] protection random seed: $PROTECTION_RANDOM_SEED"
 echo "[run] protection target: $PROTECTION_TARGET"
 echo "[run] cache quantization mode: $CACHE_QUANTIZATION_MODE"
 echo "[run] quantize block size: $QUANTIZE_BLOCK_SIZE"
@@ -122,6 +124,7 @@ if [ -n "$TARGET_AVERAGE_BITS" ]; then
   mixed_bits_args+=(--target-average-bits "$TARGET_AVERAGE_BITS")
 fi
 mixed_bits_args+=(--protection-budget-order "$PROTECTION_BUDGET_ORDER")
+mixed_bits_args+=(--protection-random-seed "$PROTECTION_RANDOM_SEED")
 mixed_bits_args+=(--protection-target "$PROTECTION_TARGET")
 mixed_bits_args+=(--loop-ngram-size "$LOOP_NGRAM_SIZE")
 mixed_bits_args+=(--loop-repeat-threshold "$LOOP_REPEAT_THRESHOLD")

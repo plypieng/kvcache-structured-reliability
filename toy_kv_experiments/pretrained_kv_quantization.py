@@ -346,11 +346,12 @@ JSON_STRUCTURE_MARKERS = frozenset({"{", "}", "[", "]", ":", ",", '"'})
 STRUCTEVAL_CONTROL_MARKERS = ("<|BEGIN_CODE|>", "<|END_CODE|>", "BEGIN_CODE", "END_CODE")
 STRUCTURE_TOKEN_PROTECTION_MODES = (
     "none",
+    "all",
     "json-syntax",
     "constraint-paths",
     "json-syntax+constraint-paths",
 )
-PROTECTION_BUDGET_ORDERS = ("prefix", "recent", "score")
+PROTECTION_BUDGET_ORDERS = ("prefix", "recent", "random", "score")
 PROTECTION_TARGETS = ("both", "keys", "values")
 PROTECTION_SIGNAL_SOURCES = ("prompt-visible", "oracle-required-paths")
 
@@ -516,7 +517,9 @@ def structure_token_mask(
         is_control = any(marker in piece for marker in STRUCTEVAL_CONTROL_MARKERS)
         is_json_syntax = any(marker in piece for marker in JSON_STRUCTURE_MARKERS)
         is_constraint = _piece_matches_constraint_terms(piece, normalized_constraint_terms)
-        if mode == "json-syntax":
+        if mode == "all":
+            protected.append(True)
+        elif mode == "json-syntax":
             protected.append(is_control or is_json_syntax)
         elif mode == "constraint-paths":
             protected.append(is_control or is_constraint)
@@ -546,7 +549,9 @@ def structure_token_scores(
         is_json_syntax = any(marker in piece for marker in JSON_STRUCTURE_MARKERS)
         constraint_score = _piece_constraint_score(piece, weights)
         score = 0.0
-        if mode == "json-syntax":
+        if mode == "all":
+            score = 1.0
+        elif mode == "json-syntax":
             score = 100.0 if is_control else (4.0 if is_json_syntax else 0.0)
         elif mode == "constraint-paths":
             score = 100.0 if is_control else constraint_score
@@ -712,6 +717,7 @@ def budgeted_protection_mask(
     order: str = "prefix",
     scores: torch.Tensor | None = None,
     storage_profile: RealCacheStorageBudgetProfile | None = None,
+    random_seed: int = 0,
 ) -> torch.Tensor | None:
     """Select protected positions under an average-bit budget.
 
@@ -746,6 +752,8 @@ def budgeted_protection_mask(
             candidates.sort(key=lambda index: (-float(score_values[index].item()), int(index)))
         elif order == "recent":
             candidates.reverse()
+        elif order == "random":
+            random.Random(int(random_seed)).shuffle(candidates)
 
         current_bytes = baseline_bytes
         key_prefix = seq_len - (seq_len % storage_profile.residual_length)
@@ -821,6 +829,10 @@ def budgeted_protection_mask(
         older_candidates = torch.tensor(ranked_candidates, dtype=torch.long, device=candidate_mask.device)
     elif order == "recent":
         older_candidates = torch.flip(older_candidates, dims=[0])
+    elif order == "random":
+        shuffled = older_candidates.tolist()
+        random.Random(int(random_seed)).shuffle(shuffled)
+        older_candidates = torch.tensor(shuffled, dtype=torch.long, device=candidate_mask.device)
     chosen = older_candidates[:max_protected_older]
     selected[chosen] = True
     return selected
@@ -1029,6 +1041,7 @@ def generate_manual_kv(
     protected_bits: int | None = None,
     target_average_bits: float | None = None,
     protection_budget_order: str = "prefix",
+    protection_random_seed: int = 0,
     protection_target: str = "both",
     cache_quantization_mode: str = "repeated",
     quantize_block_size: int = 1,
@@ -1130,6 +1143,7 @@ def generate_manual_kv(
                 order=protection_budget_order,
                 scores=candidate_scores,
                 storage_profile=storage_profile if target_average_bits is not None else None,
+                random_seed=protection_random_seed,
             )
             if protected_positions is not None:
                 protected_cache_positions = int(protected_positions.sum().item())
@@ -1253,6 +1267,7 @@ def generate_manual_kv(
         "protection_budget_estimated_storage_bytes": protection_budget_estimated_storage_bytes,
         "protection_budget_target_storage_bytes": protection_budget_target_storage_bytes,
         "protection_budget_order": protection_budget_order,
+        "protection_random_seed": protection_random_seed,
         "protection_target": protection_target,
         "constraint_terms": constraint_terms or [],
         "constraint_term_weights": constraint_term_weights or {},
@@ -1612,6 +1627,7 @@ def run_structeval_smoke(
     protected_bits: int | None = None,
     target_average_bits: float | None = None,
     protection_budget_order: str = "prefix",
+    protection_random_seed: int = 0,
     protection_target: str = "both",
     cache_quantization_mode: str = "repeated",
     quantize_block_size: int = 1,
@@ -1708,6 +1724,7 @@ def run_structeval_smoke(
                 protected_bits=protected_bits,
                 target_average_bits=target_average_bits,
                 protection_budget_order=protection_budget_order,
+                protection_random_seed=protection_random_seed,
                 protection_target=protection_target,
                 cache_quantization_mode=cache_quantization_mode,
                 quantize_block_size=quantize_block_size,
@@ -1801,12 +1818,20 @@ def run_structeval_smoke(
                 "structure_token_protection": structure_token_protection,
                 "protection_signal_source": protection_signal_source,
                 "protection_method_label": (
-                    "uniform-cache-fidelity"
+                    "uniform-kivi4"
                     if structure_token_protection == "none"
                     else (
-                        "oracle-path-upper-bound"
-                        if protection_signal_source == "oracle-required-paths"
-                        else "prompt-schema-lexical-protection"
+                        "random-protection"
+                        if structure_token_protection == "all" and out["protection_budget_order"] == "random"
+                        else (
+                            "recency-protection"
+                            if structure_token_protection == "all" and out["protection_budget_order"] == "recent"
+                            else (
+                                "oracle-path-upper-bound"
+                                if protection_signal_source == "oracle-required-paths"
+                                else "structure-aware-protection"
+                            )
+                        )
                     )
                 ),
                 "uses_evaluator_path_leakage": protection_signal_source == "oracle-required-paths",
@@ -1818,6 +1843,7 @@ def run_structeval_smoke(
                 ],
                 "protection_budget_target_storage_bytes": out["protection_budget_target_storage_bytes"],
                 "protection_budget_order": out["protection_budget_order"],
+                "protection_random_seed": out.get("protection_random_seed", protection_random_seed),
                 "protection_target": out["protection_target"],
                 "constraint_terms": out["constraint_terms"],
                 "constraint_term_weights": out["constraint_term_weights"],
@@ -2041,6 +2067,12 @@ def main() -> None:
     parser.add_argument("--protected-bits", type=int, default=None)
     parser.add_argument("--target-average-bits", type=float, default=None)
     parser.add_argument("--protection-budget-order", choices=PROTECTION_BUDGET_ORDERS, default="prefix")
+    parser.add_argument(
+        "--protection-random-seed",
+        type=int,
+        default=0,
+        help="Deterministic seed for random protection-order controls.",
+    )
     parser.add_argument("--protection-target", choices=PROTECTION_TARGETS, default="both")
     parser.add_argument("--disable-end-code-stop", action="store_true")
     parser.add_argument("--loop-ngram-size", type=int, default=16)
@@ -2119,6 +2151,7 @@ def main() -> None:
             "protected_bits": args.protected_bits,
             "target_average_bits": args.target_average_bits,
             "protection_budget_order": args.protection_budget_order,
+            "protection_random_seed": args.protection_random_seed,
             "protection_target": args.protection_target,
         }
         run_metadata = build_run_metadata(
@@ -2150,6 +2183,7 @@ def main() -> None:
             protected_bits=args.protected_bits,
             target_average_bits=args.target_average_bits,
             protection_budget_order=args.protection_budget_order,
+            protection_random_seed=args.protection_random_seed,
             protection_target=args.protection_target,
             cache_quantization_mode=args.cache_quantization_mode,
             quantize_block_size=args.quantize_block_size,
@@ -2190,6 +2224,7 @@ def main() -> None:
             protected_bits=args.protected_bits,
             target_average_bits=args.target_average_bits,
             protection_budget_order=args.protection_budget_order,
+            protection_random_seed=args.protection_random_seed,
             protection_target=args.protection_target,
             cache_quantization_mode=args.cache_quantization_mode,
             quantize_block_size=args.quantize_block_size,
